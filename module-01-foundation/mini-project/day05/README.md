@@ -12,3 +12,4 @@ We can keep `__balance` completely private in the parent class and expose a `@ba
 ### Option 2: The Protected Variable Method (Chosen Implementation)
 I converted `self.__balance` to a protected variable: `self._balance`.
 => Why I chose it: This is the industry-standard way to handle inheritance hierachies. It safely hides the balance from external runtime scripts but trusts child subclasses (`CurrentAccount`) to read and modify it directly for advanced logic like overdraft calculations.
+.
