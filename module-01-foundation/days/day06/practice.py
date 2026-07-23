@@ -83,68 +83,68 @@
 # =====================================================================
 # EXERCISE 4: Factory Design Pattern
 # =====================================================================
-class Circle:
-    def draw(self):
-        print("Drawing a Circle")
+# class Circle:
+#     def draw(self):
+#         print("Drawing a Circle")
 
 
-class Square:
-    def draw(self):
-        print("Drawing a Square")
+# class Square:
+#     def draw(self):
+#         print("Drawing a Square")
 
 
-class Triangle:
-    def draw(self):
-        print("Drawing a Triangle")
+# class Triangle:
+#     def draw(self):
+#         print("Drawing a Triangle")
 
-class ShapeFactory:
+# class ShapeFactory:
 
-    @staticmethod
-    def create(kind):
-        if kind == "circle":
-            return Circle()
-        elif kind == "square":
-            return Square()
-        elif kind == "triangle":
-            return Triangle()
-        else:
-            raise ValueError("Unknown shape")
+#     @staticmethod
+#     def create(kind):
+#         if kind == "circle":
+#             return Circle()
+#         elif kind == "square":
+#             return Square()
+#         elif kind == "triangle":
+#             return Triangle()
+#         else:
+#             raise ValueError("Unknown shape")
 
-shape1 = ShapeFactory.create("circle")
-shape2 = ShapeFactory.create("square")
-shape3 = ShapeFactory.create("triangle")
+# shape1 = ShapeFactory.create("circle")
+# shape2 = ShapeFactory.create("square")
+# shape3 = ShapeFactory.create("triangle")
 
-shape1.draw()
-shape2.draw()
-shape3.draw()
+# shape1.draw()
+# shape2.draw()
+# shape3.draw()
 
 #=============================
 # Exersice 5
 
-class NewsAgency:
-    def __init__(self):
-        self.subscribers = []
+# class NewsAgency:
+#     def __init__(self):
+#         self.subscribers = []
 
-    def subscribe(self, subscriber):
-        self.subscribers.append(subscriber)
+#     def subscribe(self, subscriber):
+#         self.subscribers.append(subscriber)
 
-    def notify(self, news):
-        for subscriber in self.subscribers:
-            subscriber.update(news)
-class EmailSubscriber:
-    def update(self, news):
-        print(f"Email Subscriber received: {news}")
+#     def notify(self, news):
+#         for subscriber in self.subscribers:
+#             subscriber.update(news)
+# class EmailSubscriber:
+#     def update(self, news):
+#         print(f"Email Subscriber received: {news}")
 
-class MobileSubscriber:
-    def update(self, news):
-        print(f"Mobile Subscriber received: {news}")
+# class MobileSubscriber:
+#     def update(self, news):
+#         print(f"Mobile Subscriber received: {news}")
 
-agency = NewsAgency()
+# agency = NewsAgency()
 
-email = EmailSubscriber()
-mobile = MobileSubscriber()
+# email = EmailSubscriber()
+# mobile = MobileSubscriber()
 
-agency.subscribe(email)
-agency.subscribe(mobile)
+# agency.subscribe(email)
+# agency.subscribe(mobile)
 
-agency.notify("The New Version Realsed!")
+# agency.notify("The New Version Realsed!")
