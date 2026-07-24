@@ -156,8 +156,6 @@ registry.add(a2)
 registry.add(a3)
 registry.add(a4)
 
-# Transactions
-
 a1.deposit(500)
 a1.withdraw(200)
 
