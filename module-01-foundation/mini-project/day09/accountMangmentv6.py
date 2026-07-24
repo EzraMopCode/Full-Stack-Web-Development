@@ -28,11 +28,9 @@ class Branch:
 
         total = 0
 
-        # Add balances of this branch
         for account in self.accounts:
             total += account.balance
 
-        # Add balances of child branches
         for child in self.children:
             total += child.total_balance()
 
@@ -71,14 +69,12 @@ region_south = Branch("South Region")
 branch_a = Branch("Branch A")
 branch_b = Branch("Branch B")
 
-# Three levels
 head_office.add_child(region_north)
 head_office.add_child(region_south)
 
 region_north.add_child(branch_a)
 region_south.add_child(branch_b)
 
-# Add accounts
 head_office.add_account(a1)
 
 region_north.add_account(a2)
