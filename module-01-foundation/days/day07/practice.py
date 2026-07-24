@@ -1,136 +1,149 @@
-def total(nums):
-    if not nums:          # Base case
-        return 0
+# account = accounts[5]
 
-    return nums[0] + total(nums[1:])
+# for account in accounts:
+#     print(account)
 
+# for account in accounts:
+#     for transaction in transactions:
+#         print(account, transaction)
+# account = accounts_dict["ACC001"]
 
-def count_down(n):
-    if n <= 0:            # Base case
-        return
+#=================
+# Question 2
 
-    print(n)
-    count_down(n - 1)
-
-
-numbers = [5, 10, 15, 20]
-
-print("Total:", total(numbers))
-
-count_down(5)
-#=======================
-# Binary Search
-
-def binary_search(items, target):
-
-    left = 0
-    right = len(items) - 1
-
-    while left <= right:
-
-        mid = (left + right) // 2
-
-        if items[mid] == target:
-            return mid
-
-        elif items[mid] < target:
-            left = mid + 1
-
-        else:
-            right = mid - 1
-
-    return -1
+# import time
 
 
-balances = [100, 250, 500, 800, 1200, 1500]
+# accounts_list = []
 
-print(binary_search(balances, 800))
-print(binary_search(balances, 999))
-
-#==========================
-# Merge Sort
-
-def merge(left, right):
-
-    result = []
-
-    i = 0
-    j = 0
-
-    while i < len(left) and j < len(right):
-
-        if left[i] < right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-
-    result.extend(left[i:])
-    result.extend(right[j:])
-
-    return result
+# accounts_dict = {}
 
 
-def merge_sort(items):
+# for i in range(100000):
 
-    if len(items) <= 1:
-        return items
+#     account_number = f"ACC{i}"
 
-    middle = len(items) // 2
+#     accounts_list.append(account_number)
 
-    left = merge_sort(items[:middle])
-    right = merge_sort(items[middle:])
-
-    return merge(left, right)
+#     accounts_dict[account_number] = True
 
 
-numbers = [8, 4, 2, 10, 5, 7, 6, 1]
 
-print(merge_sort(numbers))
-print(sorted(numbers))
+# target = "ACC99999"
 
-#========================
+# start = time.time()
 
-accounts = [
-    ("Ezra", 500),
-    ("Abel", 1500),
-    ("Sara", 800),
-    ("John", 300)
+# target in accounts_list
+
+# end = time.time()
+
+# print("List time:", end - start)
+
+# start = time.time()
+
+# target in accounts_dict
+
+# end = time.time()
+
+# print("Dict time:", end - start)
+
+#=================
+# Question 3
+class Stack:
+
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[-1]
+
+names = [
+    "Ali",
+    "Sara",
+    "John"
 ]
 
-sorted_accounts = sorted(
-    accounts,
-    key=lambda account: account[1],
-    reverse=True
-)
+stack = Stack()
 
-print(sorted_accounts)
+for name in names:
+    stack.push(name)
+
+reversed_names = []
+
+while stack.items:
+    reversed_names.append(stack.pop())
+
+print(reversed_names)
+
+#===============
+# Question 4
+from collections import deque
+
+line = deque()
+
+customers = [
+    "Ali",
+    "Sara",
+    "John",
+    "Mike",
+    "Liya"
+]
+
+for customer in customers:
+    line.append(customer)
+
+while line:
+    customer = line.popleft()
+
+    print(
+        f"Serving {customer}"
+    )
 
 #==================
-def has_pair(nums, target):
+# Question 5
+class Node:
 
-    left = 0
-    right = len(nums) - 1
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class LinkedList:
 
-    while left < right:
-
-        current = nums[left] + nums[right]
-
-        if current == target:
-            return True
-
-        elif current < target:
-            left += 1
-
-        else:
-            right -= 1
-
-    return False
+    def __init__(self):
+        self.head = None
 
 
-numbers = [1, 2, 3, 5, 7, 9, 11]
+    def push_front(self, data):
 
-print(has_pair(numbers, 10))
-print(has_pair(numbers, 20))
+        new_node = Node(data)
 
+        new_node.next = self.head
+
+        self.head = new_node
+
+
+
+    def print_all(self):
+
+        current = self.head
+
+        while current:
+
+            print(current.data)
+
+            current = current.next
+
+
+linked = LinkedList()
+
+linked.push_front("Ali")
+linked.push_front("Sara")
+linked.push_front("John")
+
+
+linked.print_all()
