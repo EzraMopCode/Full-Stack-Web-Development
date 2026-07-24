@@ -4,6 +4,8 @@
 class BankConfig:
     _instance = None
 
+    interest_rate: float
+    overdraft_limit: float
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
