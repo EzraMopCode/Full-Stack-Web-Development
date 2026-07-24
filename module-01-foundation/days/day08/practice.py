@@ -1,12 +1,15 @@
+#====================================
+# Day 07 Exersice (1 - 5)
+
 def total(nums):
-    if not nums:          # Base case
+    if not nums:
         return 0
 
     return nums[0] + total(nums[1:])
 
 
 def count_down(n):
-    if n <= 0:            # Base case
+    if n <= 0:
         return
 
     print(n)
