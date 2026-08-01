@@ -1,0 +1,215 @@
+/* Ethio Wellness Pharmacy — profile card styles */
+
+:root {
+  /* Brand color defined in HSL so the hover state can shift lightness only */
+  --brand-h: 165;
+  --brand-s: 55%;
+  --brand-l: 30%;
+  --brand: hsl(var(--brand-h), var(--brand-s), var(--brand-l));
+  --brand-hover: hsl(var(--brand-h), var(--brand-s), 42%);
+  --brand-light: hsl(var(--brand-h), 55%, 94%);
+
+  --ink: hsl(210, 22%, 16%);
+  --muted: hsl(210, 12%, 42%);
+  --surface: hsl(0, 0%, 100%);
+  --bg: hsl(165, 30%, 95%);
+  --border: hsl(210, 16%, 86%);
+  --focus-ring: hsl(212, 90%, 45%);
+
+  --font-display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing scale — every gap, padding, and margin below is one of these */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-pill: 999px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+}
+
+main {
+  width: 100%;
+}
+
+/* --- Card: box model in action --- */
+.card {
+  position: relative;
+  overflow: hidden;
+  max-width: 380px;
+  margin: var(--space-7) auto;
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px hsl(210 20% 20% / 0.06), 0 12px 24px hsl(210 20% 20% / 0.06);
+}
+
+/* Pseudo-element #1: decorative accent bar along the top edge of the card */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-hover));
+}
+
+/* --- Status line, with a pseudo-element dot indicator --- */
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4) 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+/* Pseudo-element #2: soft pulse ring behind the status dot */
+.status-dot::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  transform: scale(1.8);
+  z-index: -1;
+}
+
+.status-dot {
+  position: relative;
+}
+/* --- Typographic hierarchy --- */
+.card-header {
+  margin-bottom: var(--space-5);
+}
+h1 {
+  margin: 0 0 var(--space-2) 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--brand);
+}
+.body-text {
+  margin: 0 0 var(--space-5) 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* --- Services list --- */
+.services {
+  list-style: none;
+  margin: 0 0 var(--space-5) 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.services li {
+  padding: var(--space-1) var(--space-3);
+  background: var(--brand-light);
+  color: var(--brand);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* Pseudo-element #3: checkmark before each service tag */
+.services li::before {
+  content: "\2713  ";
+}
+
+/* --- Contact details --- */
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-6) 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.details dt {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: var(--space-1);
+}
+
+.details dd {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* --- Contact button --- */
+.btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: var(--space-3) var(--space-5);
+  background: var(--brand);
+  color: var(--surface);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  transition: background-color 150ms ease;
+}
+
+/* Hover changes only the lightness channel of the same brand hue/saturation */
+.btn:hover {
+  background: var(--brand-hover);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
