@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>Reservations — Habesha Eatery, Bole</title>
+     <meta name="description"
+          content="Book a table at Habesha Eatery, a family-run Ethiopian restaurant in Bole, Addis Ababa, and browse our menu priced in ETB.">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Lora:wght@400;500&family=Work+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+     <header>
+          <h1>Habesha Eatery</h1>
+          <p>Ethiopian home cooking in Bole, Addis Ababa</p>
+     </header>
+
+     <nav aria-label="Site">
+          <ul>
+               <li><a href="rservation.html" aria-current="page">Reservations</a></li>
+               <li><a href="contact.html">Contact</a></li>
+          </ul>
+     </nav>
+
+     <main>
+
+          <section aria-labelledby="reserve-heading">
+               <h2 id="reserve-heading">Reserve a table</h2>
+               <form>
+                    <fieldset>
+                         <legend>Your reservation</legend>
+
+                         <div class="field">
+                              <label for="res-name">Full name</label>
+                              <input id="res-name" name="name" type="text" autocomplete="name" required>
+                         </div>
+
+                         <div class="field">
+                              <label for="res-email">Email</label>
+                              <input id="res-email" name="email" type="email" autocomplete="email" required>
+                         </div>
+
+                         <div class="field">
+                              <label for="res-phone">Phone number</label>
+                              <input id="res-phone" name="phone" type="tel" autocomplete="tel" pattern="[0-9 +\-]{7,}"
+                                   aria-describedby="phone-hint" required>
+                              <span class="hint" id="phone-hint">Include your country code, e.g. +251 9…</span>
+                         </div>
+
+                         <div class="field">
+                              <label for="res-date">Date</label>
+                              <input id="res-date" name="date" type="date" required>
+                         </div>
+
+                         <div class="field">
+                              <label for="res-time">Time</label>
+                              <input id="res-time" name="time" type="time" required>
+                         </div>
+
+                         <div class="field">
+                              <label for="res-guests">Number of guests</label>
+                              <input id="res-guests" name="guests" type="number" min="1" max="20" value="2" required>
+                         </div>
+
+                         <div class="field">
+                              <label for="res-notes">Special requests</label>
+                              <textarea id="res-notes" name="notes" aria-describedby="notes-hint"></textarea>
+                              <span class="hint" id="notes-hint">Allergies, seating preference, celebrations —
+                                   optional.</span>
+                         </div>
+
+                    </fieldset>
+
+                    <button type="submit">Request reservation</button>
+               </form>
+          </section>
+
+          <section aria-labelledby="menu-heading">
+               <h2 id="menu-heading">Menu</h2>
+               <table>
+                    <caption>Habesha Eatery menu, prices in Ethiopian Birr (ETB)</caption>
+                    <thead>
+                         <tr>
+                              <th scope="col">Dish</th>
+                              <th scope="col">Description</th>
+                              <th scope="col">Price (ETB)</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                              <th scope="row">Doro Wat</th>
+                              <td>Slow-simmered chicken stew in berbere sauce, served with a boiled egg and injera</td>
+                              <td>320</td>
+                         </tr>
+                         <tr>
+                              <th scope="row">Kitfo</th>
+                              <td>Minced beef warmed in spiced butter, served with ayib cheese and gomen</td>
+                              <td>350</td>
+                         </tr>
+                         <tr>
+                              <th scope="row">Tibs</th>
+                              <td>Pan-fried beef cubes with onion, garlic, and rosemary</td>
+                              <td>300</td>
+                         </tr>
+                         <tr>
+                              <th scope="row">Shiro</th>
+                              <td>Spiced chickpea stew, slow-cooked and served with injera</td>
+                              <td>220</td>
+                         </tr>
+                         <tr>
+                              <th scope="row">Yetsom Beyaynetu</th>
+                              <td>Vegan sampler platter of lentils, cabbage, beets, and greens on injera</td>
+                              <td>280</td>
+                         </tr>
+                         <tr>
+                              <th scope="row">Buna Ceremony</th>
+                              <td>Traditional coffee ceremony for two, roasted and brewed at your table</td>
+                              <td>180</td>
+                         </tr>
+                    </tbody>
+               </table>
+          </section>
+
+          <section aria-labelledby="find-us-heading">
+               <h2 id="find-us-heading">Find us</h2>
+               <figure>
+                    <img src="image/coffee.jpg"
+                         alt="Illustration of a traditional black clay jebena coffee pot with three small cups on a woven straw mat.">
+                    <iframe src="https://www.google.com/maps?q=Bole,+Addis+Ababa,+Ethiopia&output=embed"
+                         title="Map showing the location of Habesha Eatery in Bole, Addis Ababa"></iframe>
+                    <figcaption>Our coffee ceremony corner, and a map of our Bole neighborhood.</figcaption>
+               </figure>
+          </section>
+
+     </main>
+
+     <footer>
+          <p>Habesha Eatery · Bole Road, Addis Ababa, Ethiopia · <a href="tel:+251911000000">+251 91 100 0000</a></p>
+     </footer>
+
+</body>
+
+</html>

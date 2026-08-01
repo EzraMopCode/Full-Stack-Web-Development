@@ -1,0 +1,271 @@
+:root {
+  --coffee: #3b2417;
+  --coffee-dark: #241309;
+  --cream: #f7ecd9;
+  --gold: #c98a2c;
+  --leaf: #4c6b3f;
+  --berry: #a5312a;
+  --line: #d9c6a3;
+  --focus: #1a5fb4;
+  --radius: 6px;
+
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Lora", "Iowan Old Style", Georgia, serif;
+  --font-ui: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--coffee-dark);
+  line-height: 1.5;
+}
+
+header,
+nav,
+main,
+footer {
+  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+}
+
+header {
+  background: var(--coffee);
+  color: var(--cream);
+  border-bottom: 4px solid var(--gold);
+}
+
+header h1 {
+  margin: 0 0 0.25rem 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 0.01em;
+}
+
+header p {
+  margin: 0;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+}
+
+nav {
+  background: var(--coffee-dark);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.1rem;
+  border-bottom: 2px solid transparent;
+}
+
+nav a[aria-current="page"] {
+  border-bottom-color: var(--gold);
+  color: var(--gold);
+}
+
+nav a:hover,
+nav a:focus {
+  border-bottom-color: var(--gold);
+}
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  color: var(--coffee);
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 0.4rem;
+  font-size: 1.5rem;
+}
+
+/* Forms */
+
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 32rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+label {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #5b4630;
+  font-family: var(--font-ui);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fffdf8;
+  color: var(--coffee-dark);
+}
+
+textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+legend {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: var(--coffee);
+  padding: 0 0.4rem;
+}
+
+button {
+  justify-self: start;
+  background: var(--berry);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.65rem 1.4rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #8a2721;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Tables */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fffdf8;
+}
+
+caption {
+  text-align: left;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: var(--coffee);
+  margin-bottom: 0.5rem;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+}
+
+thead th {
+  background: var(--coffee);
+  color: var(--cream);
+}
+
+tbody tr:nth-child(even) {
+  background: #f1e4c8;
+}
+
+/* Media block */
+
+figure {
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  figure {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+figure iframe {
+  width: 100%;
+  height: 260px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+figcaption {
+  grid-column: 1 / -1;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: #5b4630;
+}
+
+footer {
+  background: var(--coffee-dark);
+  color: var(--cream);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+footer a {
+  color: var(--gold);
+}
