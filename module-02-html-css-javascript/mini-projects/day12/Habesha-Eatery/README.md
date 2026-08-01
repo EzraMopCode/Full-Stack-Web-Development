@@ -2,7 +2,6 @@
 
 A two-page site for a fictional Ethiopian restaurant in Bole, Addis Ababa, built with
 semantic HTML and one shared stylesheet.
-
 - `index.html` — reservation form, ETB menu table, and a media block (illustration + map)
 - `contact.html` — contact form and an opening-hours table
 - `style.css` — shared styles for both pages (type pairing: Fraunces for headings, Lora for body copy, Work Sans for UI/labels/tables, loaded via Google Fonts with serif/sans-serif system fallbacks)
