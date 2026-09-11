@@ -1,5 +1,3 @@
-
-
 const Header = () => {
   return (
     <header>
@@ -12,7 +10,7 @@ const Dish = ({ name, price }) => {
   return (
     <div>
       <h2>{name}</h2>
-      <p>{price} ETB.</p>
+      <p>{price}</p>
     </div>
   );
 };
