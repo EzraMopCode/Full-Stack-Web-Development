@@ -1,0 +1,93 @@
+/* Exersice 1 */
+:root {
+  --primary-color: #4a2c11;
+  --accent-color: #d4a373;
+  --spacing-md: 12px 24px;
+  --font-main: 'Inter', sans-serif;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.custom-btn {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  padding: var(--spacing-md);
+  font-family: var(--font-main);
+  border: 2px solid var(--accent-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.custom-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Problem: Measures 352px total width we do only box-sizing content box means
+we can also include width, padding, border*/
+
+.card-content-box {
+  box-sizing: content-box;
+  width: 300px;
+  padding: 24px;
+  border: 2px solid #333;
+}
+
+/* Fix: Measures exactly 300px total width we do only box-sizing border box means
+we can not include padding, border. we only calculate width */
+.card-border-box {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 24px;
+  border: 2px solid #333;
+}
+
+
+
+p {
+     color: navy;
+}
+.note {
+     color: goldenrod;
+}
+#warning {
+     color: crimson;
+}
+
+table {
+     width: 100%;
+     border-collapse:
+     collapse; font-family:
+     var(--font-stack);
+}
+
+h2 {
+     text-align: center;
+}
+.flight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+}
+
+.flight-table th {
+  background-color: #006633;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+  padding: 14px 18px;
+}
+
+.flight-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.flight-table tbody tr:nth-child(even) {
+  background-color: #f2f9f5;
+}
