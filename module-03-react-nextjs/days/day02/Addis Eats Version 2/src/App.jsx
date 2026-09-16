@@ -13,6 +13,7 @@ function App() {
   const activeCategory = "vegan";
   const filteredItems = menuItems.filter(item => item.category === activeCategory);
 
+  
   if (filteredItems.length === 0) {
     return (
       <div className="app-container">
