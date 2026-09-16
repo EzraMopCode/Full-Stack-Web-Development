@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wot",
+    "price": 250,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 2,
+    "name": "Shiro",
+    "price": 180,
+    "category": "Main",
+    "spicy": false
+  },
+  {
+    "id": 3,
+    "name": "Sambusa",
+    "price": 80,
+    "category": "Starter",
+    "spicy": true
+  },
+  {
+    "id": 4,
+    "name": "Firfir",
+    "price": 150,
+    "category": "Main",
+    "spicy": true
+  },
+  {
+    "id": 5,
+    "name": "Cake",
+    "price": 120,
+    "category": "Dessert",
+    "spicy": false
+  }
+]
