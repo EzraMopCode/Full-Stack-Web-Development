@@ -1,0 +1,149 @@
+:root {
+  --bg-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-main: #f4f4f4;
+  --text-muted: #aaaaaa;
+  --accent: #4caf50;
+  --accent-hover: #45a049;
+  --border: #333333;
+  --danger: #dc3545;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.cart-badge {
+  background: var(--surface-color);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.menu-layout {
+  display: grid;
+  gap: 20px;
+}
+
+.category-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.category-bar button {
+  background: var(--surface-color);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.category-bar button:hover {
+  border-color: var(--accent);
+}
+
+.category-bar button.active {
+  background: var(--accent);
+  color: #111;
+  border-color: var(--accent);
+  font-weight: bold;
+}
+
+.dish-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: var(--surface-color);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+}
+
+.card p {
+  color: var(--text-muted);
+  margin: 0 0 15px 0;
+}
+
+.card button, .checkout-panel > button {
+  background: var(--accent);
+  color: #111;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.card button:hover, .checkout-panel > button:hover {
+  background: var(--accent-hover);
+}
+
+.checkout-panel {
+  background: var(--surface-color);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.checkout-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.checkout-panel li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.checkout-panel li button {
+  background: var(--danger);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
