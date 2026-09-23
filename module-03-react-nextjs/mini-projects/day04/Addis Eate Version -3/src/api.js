@@ -1,11 +1,9 @@
-export async function getDishes(category, signal) {
-  const res = await fetch("/dishes.json", { signal });
+const DISHES_URL = '/dishes.json';
 
+export async function fetchDishes(signal) {
+  const res = await fetch(DISHES_URL, { signal });
   if (!res.ok) {
-    throw new Error("Could not load the menu. Please try again.");
+    throw new Error('Could not load the menu. Please check your connection and try again.');
   }
-
-  const dishes = await res.json();
-
-  return dishes.filter((dish) => dish.category === category);
+  return res.json();
 }

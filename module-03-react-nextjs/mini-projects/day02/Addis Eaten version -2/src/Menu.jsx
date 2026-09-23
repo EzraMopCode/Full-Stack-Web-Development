@@ -1,25 +1,22 @@
-import PropTypes from "prop-types";
-import Dish from "./Dish";
-import Card from "./Card";
+import PropTypes from 'prop-types';
+import Dish from './Dish';
+import Card from './Card';
+import menu from './data';
 
-function Menu({ dishes, category }) {
-  const filteredDishes = dishes.filter(
-    (dish) => dish.category === category
-  );
+function Menu({ category }) {
+  const filtered = category
+    ? menu.filter((dish) => dish.category === category)
+    : menu;
 
-  if (filteredDishes.length === 0) {
-    return <p>No dishes found.</p>;
+  if (filtered.length === 0) {
+    return <p className="empty-state">No dishes found in this category.</p>;
   }
 
   return (
-    <div>
-      {filteredDishes.map((dish) => (
+    <div className="menu">
+      {filtered.map((dish) => (
         <Card key={dish.id}>
-          <Dish
-            name={dish.name}
-            price={dish.price}
-            spicy={dish.spicy}
-          />
+          <Dish name={dish.name} price={dish.price} spicy={dish.spicy} />
         </Card>
       ))}
     </div>
@@ -27,16 +24,7 @@ function Menu({ dishes, category }) {
 }
 
 Menu.propTypes = {
-  dishes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      category: PropTypes.string.isRequired,
-      spicy: PropTypes.bool.isRequired
-    })
-  ).isRequired,
-  category: PropTypes.string.isRequired
+  category: PropTypes.string,
 };
 
 export default Menu;

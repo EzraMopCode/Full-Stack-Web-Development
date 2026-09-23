@@ -1,40 +1,61 @@
-import { useSearchParams } from "react-router-dom";
-import { useFetch } from "./useFetch";
-import { useCart } from "./CartProvider";
-import Dish from "./Dish";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useFetch } from './useFetch';
+import { useCart } from './CartContext';
+import CategoryBar from './CategoryBar';
+import DishList from './DishList';
 
-export default function Menu() {
+const categories = ['All', 'Main', 'Vegan', 'Grill'];
+
+function Menu() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const category = searchParams.get("category") || "All";
-
-  const { data, loading, error } = useFetch("/dishes.json");
+  const category = searchParams.get('category') || 'All';
+  const [search, setSearch] = useState('');
   const { dispatch } = useCart();
+  const searchRef = useRef(null);
 
-  const categories = ["All", "Main", "Vegan", "Grill"];
+  const { data, loading, error } = useFetch(`/dishes.json?category=${category}`);
 
-  if (loading) return <p>Loading menu...</p>;
-  if (error) return <p>Error: {error}</p>;
+  useEffect(() => {
+    searchRef.current?.focus();
+  }, []);
 
-  const filteredDishes = category === "All" ? data : data?.filter(d => d.category === category);
+  const dishes = data ?? [];
+
+  const filtered = useMemo(
+    () =>
+      dishes
+        .filter((dish) => category === 'All' || dish.category === category)
+        .filter((dish) => dish.name.toLowerCase().includes(search.toLowerCase())),
+    [dishes, category, search]
+  );
+
+  function handleAdd(dish) {
+    dispatch({ type: 'add', dish });
+  }
+
+  function handleCategorySelect(next) {
+    setSearchParams(next === 'All' ? {} : { category: next });
+  }
 
   return (
-    <div className="menu-layout">
-      <div className="category-bar">
-        {categories.map(cat => (
-          <button
-            key={cat}
-            className={category === cat ? "active" : ""}
-            onClick={() => setSearchParams({ category: cat })}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-      <div className="dish-list">
-        {filteredDishes?.map(d => (
-          <Dish key={d.id} dish={d} onAdd={(dish) => dispatch({ type: "add", dish })} />
-        ))}
-      </div>
+    <div className="menu-page">
+      <input
+        ref={searchRef}
+        className="search-input"
+        type="text"
+        placeholder="Search dishes..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <CategoryBar categories={categories} selected={category} onSelect={handleCategorySelect} />
+
+      {loading && <p className="status-message">Loading the menu…</p>}
+      {!loading && error && <p className="status-message error">{error}</p>}
+      {!loading && !error && <DishList dishes={filtered} onAdd={handleAdd} />}
     </div>
   );
 }
+
+export default Menu;

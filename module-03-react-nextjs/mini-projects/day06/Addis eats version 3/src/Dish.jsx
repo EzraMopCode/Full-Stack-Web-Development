@@ -1,17 +1,32 @@
-import { memo } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-const Dish = memo(function Dish({ dish, onAdd }) {
+function Dish({ name, price, spicy = false, currency = "ETB" }) {
+  const [count, setCount] = useState(0);
+
+  function handleAdd() {
+    setCount(count + 1);
+  }
+
   return (
-    <div className="card">
-      <h3>{dish.name} {dish.spicy && "🌶️"}</h3>
-      <p>{dish.price} ETB</p>
-      <div className="card-actions">
-        <button onClick={() => onAdd(dish)}>Add to Cart</button>
-        <Link to={`/menu/${dish.id}`} className="button-link">Details</Link>
-      </div>
+    <div className="dish">
+      <h3>
+        {name} {spicy === true && <span>• Spicy</span>} {count}
+      </h3>
+
+      <p>
+        {price} {currency}
+      </p>
+
+      <button onClick={handleAdd}>Add</button>
     </div>
   );
-});
+}
+
+Dish.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  spicy: PropTypes.bool
+};
 
 export default Dish;

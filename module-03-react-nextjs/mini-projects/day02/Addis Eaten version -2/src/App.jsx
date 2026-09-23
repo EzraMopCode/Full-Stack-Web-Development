@@ -1,11 +1,12 @@
-import Menu from "./Menu";
-import menu from "./data";
+import Header from './Header';
+import Menu from './Menu';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>Addis Eats</h1>
-      <Menu dishes={menu} category="Main" />
+    <div className="app">
+      <Header />
+      <Menu category="Main" />
     </div>
   );
 }

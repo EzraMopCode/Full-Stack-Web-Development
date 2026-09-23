@@ -1,35 +1,29 @@
-import PropTypes from "prop-types";
-import Dish from "./Dish";
+import PropTypes from 'prop-types';
+import Dish from './Dish';
+import Card from './Card';
 
-function DishList({ dishes }) {
+function DishList({ dishes, onAdd }) {
   if (dishes.length === 0) {
-    return <p>No dishes found in this category.</p>;
+    return <p className="empty-state">No dishes in this category yet.</p>;
   }
 
   return (
-    <div>
+    <div className="menu">
       {dishes.map((dish) => (
-        <Dish
-          key={dish.id}
-          name={dish.name}
-          price={dish.price}
-          spicy={dish.spicy}
-        />
+        <Card key={dish.id}>
+          <Dish name={dish.name} price={dish.price} spicy={dish.spicy} />
+          <button className="add-btn" onClick={() => onAdd(dish.price)}>
+            Add — {dish.price} ETB
+          </button>
+        </Card>
       ))}
     </div>
   );
 }
 
 DishList.propTypes = {
-  dishes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      category: PropTypes.string.isRequired,
-      spicy: PropTypes.bool.isRequired
-    })
-  ).isRequired
+  dishes: PropTypes.array.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 export default DishList;

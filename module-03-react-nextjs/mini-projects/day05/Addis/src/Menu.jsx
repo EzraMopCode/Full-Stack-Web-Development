@@ -1,51 +1,55 @@
-import { useState, useCallback } from "react";
-import { useFetch } from "./useFetch";
-import { useCart } from "./CartProvider";
-import Dish from "./Dish";
-import CheckoutPanel from "./CheckoutPanel";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useFetch } from './useFetch';
+import { useCart } from './CartContext';
+import CategoryBar from './CategoryBar';
+import DishList from './DishList';
+
+const categories = ['All', 'Main', 'Vegan', 'Grill'];
 
 function Menu() {
-  const [category, setCategory] = useState("All");
-
-  // Adding the category to the URL changes the hook dependency, forcing the AbortController to cancel the previous request
-  const { data, loading, error } = useFetch(`/dishes.json?category=${category}`);
+  const [category, setCategory] = useState('All');
+  const [search, setSearch] = useState('');
   const { dispatch } = useCart();
+  const searchRef = useRef(null);
 
-  // useCallback keeps this function reference stable, allowing React.memo to properly skip re-renders on the Dish component
-  const handleAdd = useCallback((dish) => {
-    dispatch({ type: "add", dish });
-  }, [dispatch]);
+  const { data, loading, error } = useFetch(`/dishes.json?category=${category}`);
 
-  const categories = ["All", "Main", "Vegan", "Grill"];
+  useEffect(() => {
+    searchRef.current?.focus();
+  }, []);
 
-  if (loading) return <p>Loading menu...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const dishes = data ?? [];
 
-  const filteredDishes = category === "All"
-    ? data
-    : data.filter(d => d.category === category);
+  // Justified useMemo: filtering runs on every keystroke/category change,
+  // so we avoid re-filtering the whole list when unrelated state (e.g. cart) changes.
+  const filtered = useMemo(
+    () =>
+      dishes
+        .filter((dish) => category === 'All' || dish.category === category)
+        .filter((dish) => dish.name.toLowerCase().includes(search.toLowerCase())),
+    [dishes, category, search]
+  );
+
+  function handleAdd(dish) {
+    dispatch({ type: 'add', dish });
+  }
 
   return (
-    <div className="menu-layout">
-      <div className="category-bar">
-        {categories.map(cat => (
-          <button
-            key={cat}
-            className={category === cat ? "active" : ""}
-            onClick={() => setCategory(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+    <div className="menu-page">
+      <input
+        ref={searchRef}
+        className="search-input"
+        type="text"
+        placeholder="Search dishes..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
-      <div className="dish-list">
-        {filteredDishes && filteredDishes.map(d => (
-          <Dish key={d.id} dish={d} onAdd={handleAdd} />
-        ))}
-      </div>
+      <CategoryBar categories={categories} selected={category} onSelect={setCategory} />
 
-      <CheckoutPanel />
+      {loading && <p className="status-message">Loading the menu…</p>}
+      {!loading && error && <p className="status-message error">{error}</p>}
+      {!loading && !error && <DishList dishes={filtered} onAdd={handleAdd} />}
     </div>
   );
 }

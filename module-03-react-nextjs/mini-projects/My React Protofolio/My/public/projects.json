@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Addis Eats",
+    "description": "An interactive restaurant menu application featuring a category filter and a global shopping cart with dynamic total calculation.",
+    "techStack": ["React", "useReducer", "useContext", "Custom Hooks"],
+    "githubUrl": "https://github.com/yourusername/addis-eats"
+  },
+  {
+    "id": 2,
+    "title": "Theme Provider Context",
+    "description": "A deeply nested dark/light theme toggler demonstrating React context and memoization techniques to prevent unnecessary re-renders.",
+    "techStack": ["React Context", "useMemo", "CSS Variables"],
+    "githubUrl": "#"
+  }
+]

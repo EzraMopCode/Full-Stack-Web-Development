@@ -1,35 +1,25 @@
-const Header = () => {
-  return (
-    <header>
-      <h1>Menu</h1>
-    </header>
-  );
-};
+import Header from './Header';
+import Dish from './Dish';
+import './App.css';
 
-const Dish = ({ name, price }) => {
-  return (
-    <div>
-      <h2>{name}</h2>
-      <p>{price}</p>
-    </div>
-  );
-};
+const menu = [
+  { id: 1, name: 'Doro Wat', price: 240 },
+  { id: 2, name: 'Tibs', price: 220 },
+  { id: 3, name: 'Shiro', price: 150 },
+  { id: 4, name: 'Kitfo', price: 260 },
+  { id: 5, name: 'Injera with Veggie Combo', price: 180 },
+  { id: 6, name: 'Misir Wot', price: 140 },
+];
 
 function App() {
-  const dishes = [
-    { id: 1, name: "Tacos", price: 5 },
-    { id: 2, name: "Burger", price: 10 },
-    { id: 3, name: "Pasta", price: 12 }
-  ];
-
   return (
-    <div>
+    <div className="app">
       <Header />
-      <h1>Welcome</h1>
-      <p>Here are our dishes for today.</p>
-      {dishes.map((dish) => (
-        <Dish key={dish.id} name={dish.name} price={dish.price} />
-      ))}
+      <main className="menu">
+        {menu.map((dish) => (
+          <Dish key={dish.id} name={dish.name} price={dish.price} />
+        ))}
+      </main>
     </div>
   );
 }

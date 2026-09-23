@@ -1,11 +1,21 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function Card({ children }) {
-  return <div className="card">{children}</div>;
+function Dish({ name, price, currency = 'ETB', spicy = false }) {
+  return (
+    <div className="dish">
+      <h3 className="dish-name">
+        {name} {spicy && <span className="spicy-badge">• Spicy</span>}
+      </h3>
+      <p className="dish-price">{price} {currency}</p>
+    </div>
+  );
 }
 
-Card.propTypes = {
-  children: PropTypes.node.isRequired
+Dish.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  currency: PropTypes.string,
+  spicy: PropTypes.bool,
 };
 
-export default Card;
+export default Dish;

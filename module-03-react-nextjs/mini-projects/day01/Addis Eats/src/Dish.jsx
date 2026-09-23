@@ -1,8 +1,8 @@
 function Dish({ name, price }) {
   return (
     <div className="dish">
-      <h3>{name}</h3>
-      <p>{price} ETB</p>
+      <h3 className="dish-name">{name}</h3>
+      <p className="dish-price">{price} ETB</p>
     </div>
   );
 }

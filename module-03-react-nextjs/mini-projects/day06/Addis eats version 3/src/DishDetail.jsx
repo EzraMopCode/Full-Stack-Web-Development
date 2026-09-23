@@ -1,36 +1,36 @@
-import { useParams, Link } from "react-router-dom";
-import { useFetch } from "./useFetch";
-import { useCart } from "./CartProvider";
+import { useParams, Link } from 'react-router-dom';
+import { useFetch } from './useFetch';
+import { useCart } from './CartContext';
 
-export default function DishDetail() {
+function DishDetail() {
   const { id } = useParams();
-  const { data, loading, error } = useFetch("/dishes.json");
+  const { data, loading, error } = useFetch('/dishes.json');
   const { dispatch } = useCart();
 
-  if (loading) return <p>Loading details...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="status-message">Loading dish…</p>;
+  if (error) return <p className="status-message error">{error}</p>;
 
-  const dish = data?.find((d) => d.id === Number(id));
+  const dish = data?.find((d) => String(d.id) === id);
 
   if (!dish) {
     return (
-      <div className="not-found">
-        <h2>Dish Not Found</h2>
-        <p>We couldn't find the dish you are looking for.</p>
-        <Link to="/menu" className="button-link">&larr; Back to Menu</Link>
+      <div className="dish-detail">
+        <p className="empty-state">Sorry, we couldn't find that dish.</p>
+        <Link to="/menu" className="add-btn">Back to menu</Link>
       </div>
     );
   }
 
   return (
-    <div className="dish-detail card">
-      <h2>{dish.name} {dish.spicy && "🌶️"}</h2>
-      <p className="price">{dish.price} ETB</p>
+    <div className="dish-detail">
+      <h2>{dish.name} {dish.spicy && <span className="spicy-badge">• Spicy</span>}</h2>
+      <p className="dish-price">{dish.price} ETB</p>
       <p>Category: {dish.category}</p>
-      <div className="card-actions">
-        <button onClick={() => dispatch({ type: "add", dish })}>Add to Cart</button>
-        <Link to="/menu" className="button-link">&larr; Back to Menu</Link>
-      </div>
+      <button className="add-btn" onClick={() => dispatch({ type: 'add', dish })}>
+        Add to cart
+      </button>
     </div>
   );
 }
+
+export default DishDetail;

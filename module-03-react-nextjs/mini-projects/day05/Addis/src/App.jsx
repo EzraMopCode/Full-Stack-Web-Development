@@ -1,16 +1,18 @@
-import { CartProvider } from "./CartProvider";
-import CartBadge from "./CartBadge";
-import Menu from "./Menu";
+import Header from './Header';
+import Menu from './Menu';
+import CheckoutPanel from './CheckoutPanel';
+import OrderForm from './OrderForm';
+import CartProvider from './CartProvider';
+import './App.css';
 
 function App() {
   return (
     <CartProvider>
-      <div className="app-container">
-        <header className="header">
-          <h1>Addis Eats</h1>
-          <CartBadge />
-        </header>
+      <div className="app">
+        <Header />
         <Menu />
+        <CheckoutPanel />
+        <OrderForm />
       </div>
     </CartProvider>
   );

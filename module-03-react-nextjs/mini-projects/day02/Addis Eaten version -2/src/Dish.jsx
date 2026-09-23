@@ -1,14 +1,12 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function Dish({ name, price, currency = "ETB", spicy = false }) {
+function Dish({ name, price, currency = 'ETB', spicy = false }) {
   return (
     <div className="dish">
-      <h3>
-        {name} {spicy === true && <span>• Spicy</span>}
+      <h3 className="dish-name">
+        {name} {spicy && <span className="spicy-badge">• Spicy</span>}
       </h3>
-      <p>
-        {price} {currency}
-      </p>
+      <p className="dish-price">{price} {currency}</p>
     </div>
   );
 }
@@ -16,7 +14,8 @@ function Dish({ name, price, currency = "ETB", spicy = false }) {
 Dish.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  spicy: PropTypes.bool
+  currency: PropTypes.string,
+  spicy: PropTypes.bool,
 };
 
 export default Dish;

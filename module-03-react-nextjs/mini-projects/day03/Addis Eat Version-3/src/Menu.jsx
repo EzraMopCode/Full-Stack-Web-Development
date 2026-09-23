@@ -1,35 +1,28 @@
-import { useState } from "react";
-import { dishes } from "./data";
-import CategoryBar from "./Category";
-import DishList from "./DishList";
-import OrderForm from "./OrderForm";
+import { useState } from 'react';
+import menu from './data';
+import CategoryBar from './CategoryBar';
+import DishList from './DishList';
+import OrderForm from './OrderForm';
+
+const categories = ['All', 'Main', 'Vegan', 'Grill'];
 
 function Menu() {
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState('All');
   const [total, setTotal] = useState(0);
 
-  const cats = ["All", "Main", "Vegan", "Grill"];
+  const shown = category === 'All'
+    ? menu
+    : menu.filter((dish) => dish.category === category);
 
-  const shown = category === "All"
-    ? dishes
-    : dishes.filter((d) => d.category === category);
-
-  const handleAddToTotal = (price) => {
-    setTotal(total + price);
-  };
+  function handleAdd(price) {
+    setTotal((prev) => prev + price);
+  }
 
   return (
-    <div>
-      <CategoryBar
-        categories={cats}
-        selected={category}
-        onSelect={setCategory}
-      />
-
-      <h2>Total: {total} ETB</h2>
-
-      <DishList items={shown} onAdd={handleAddToTotal} />
-
+    <div className="menu-page">
+      <CategoryBar categories={categories} selected={category} onSelect={setCategory} />
+      <p className="order-total">Order total: {total} ETB</p>
+      <DishList dishes={shown} onAdd={handleAdd} />
       <OrderForm />
     </div>
   );

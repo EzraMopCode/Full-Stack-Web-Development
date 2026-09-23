@@ -1,20 +1,20 @@
-import { useCart } from "./CartProvider";
+import { useCart } from './CartContext';
+import OrderForm from './OrderForm';
 
-export default function Checkout() {
-  const { total, dispatch } = useCart();
+function Checkout() {
+  const { items, total } = useCart();
 
   return (
-    <div className="checkout-panel">
-      <h2>Secure Checkout</h2>
-      <p>Your total is <strong>{total} ETB</strong>.</p>
-      <button
-        onClick={() => {
-          alert("Order Placed!");
-          dispatch({ type: "clear" });
-        }}
-      >
-        Place Order
-      </button>
+    <div className="checkout-page">
+      <h2>Checkout</h2>
+      {items.length === 0 ? (
+        <p className="empty-state">Your cart is empty.</p>
+      ) : (
+        <p className="checkout-total">Order total: {total} ETB</p>
+      )}
+      <OrderForm />
     </div>
   );
 }
+
+export default Checkout;

@@ -1,22 +1,31 @@
-import { NavLink, Outlet } from "react-router-dom";
-import CartBadge from "./CartBadge";
+import { NavLink, Outlet } from 'react-router-dom';
+import CartBadge from './CartBadge';
 
-export default function Layout() {
+function navClass({ isActive }) {
+  return isActive ? 'nav-link nav-active' : 'nav-link';
+}
+
+function Layout() {
   return (
-    <div className="app-container">
+    <div className="app">
       <header className="header">
-        <h1>Addis Eats</h1>
-        <nav className="nav-tabs">
-          <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
-          <NavLink to="/menu" className={({ isActive }) => isActive ? "active" : ""}>Menu</NavLink>
-          <NavLink to="/cart" className={({ isActive }) => isActive ? "active" : ""}>Cart</NavLink>
+        <div className="header-top">
+          <h1>Addis Eats</h1>
+          <CartBadge />
+        </div>
+        <nav className="main-nav">
+          <NavLink to="/" end className={navClass}>Home</NavLink>
+          <NavLink to="/menu" className={navClass}>Menu</NavLink>
+          <NavLink to="/cart" className={navClass}>Cart</NavLink>
+          <NavLink to="/checkout" className={navClass}>Checkout</NavLink>
         </nav>
-        <CartBadge />
       </header>
 
-      <main className="main-content">
+      <main>
         <Outlet />
       </main>
     </div>
   );
 }
+
+export default Layout;

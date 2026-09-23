@@ -1,37 +1,36 @@
-import { useEffect, useState } from "react";
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { fetchDishes } from './api';
+import CategoryBar from './CategoryBar';
+import DishList from './DishList';
+import OrderForm from './OrderForm';
 
-import PropTypes from "prop-types";
-import { getDishes } from "./api";
-import DishList from "./DishList";
+const categories = ['All', 'Main', 'Vegan', 'Grill'];
 
-function SearchInput() {
-  const searchRef = useRef(null);
-
-  useEffect(() => {
-    searchRef.current.focus();
-  }, []);
-
-  return <input ref={searchRef} placeholder="Search dishes" />;
-}
-
-function Menu({ category }) {
+function Menu() {
+  const [category, setCategory] = useState('All');
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState('');
+  const [total, setTotal] = useState(0);
+
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    searchRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    async function loadDishes() {
+    async function load() {
       setLoading(true);
       setError(null);
-
       try {
-        const data = await getDishes(category, controller.signal);
+        const data = await fetchDishes(controller.signal);
         setDishes(data);
       } catch (e) {
-        if (e.name !== "AbortError") {
+        if (e.name !== 'AbortError') {
           setError(e.message);
         }
       } finally {
@@ -39,41 +38,40 @@ function Menu({ category }) {
       }
     }
 
-    loadDishes();
+    load();
 
-    return () => {
-      controller.abort();
-    };
+    return () => controller.abort();
   }, [category]);
 
-  if (loading) {
-    return (
-      <div>
-        <SearchInput />
-        <p>Loading the menu...</p>
-      </div>
-    );
+  function handleAdd(price) {
+    setTotal((prev) => prev + price);
   }
 
-  if (error) {
-    return (
-      <div>
-        <SearchInput />
-        <p>{error}</p>
-      </div>
-    );
-  }
+  const filtered = dishes
+    .filter((dish) => category === 'All' || dish.category === category)
+    .filter((dish) => dish.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div>
-      <SearchInput />
-      <DishList dishes={dishes} />
+    <div className="menu-page">
+      <input
+        ref={searchRef}
+        className="search-input"
+        type="text"
+        placeholder="Search dishes..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <CategoryBar categories={categories} selected={category} onSelect={setCategory} />
+      <p className="order-total">Order total: {total} ETB</p>
+
+      {loading && <p className="status-message">Loading the menu…</p>}
+      {!loading && error && <p className="status-message error">{error}</p>}
+      {!loading && !error && <DishList dishes={filtered} onAdd={handleAdd} />}
+
+      <OrderForm />
     </div>
   );
 }
-
-Menu.propTypes = {
-  category: PropTypes.string.isRequired
-};
 
 export default Menu;
