@@ -1,12 +1,12 @@
-import { notFound } from "next/navigation";
+import Link from 'next/link'
 
-export default async function Dishpage({params}) {
-     const dish = await getDish(params.id)
-
-     if(!dish) {
-          return notFound();
-     }
+export default async function DishNotFound() {
      return(
-          <h1>The page notFound</h1>
+          <div>
+               <h2>🥘 Dish Not Found</h2>
+               <p>Sorry! That item is not currently prepared on the Addis Eats traditional menu line.</p>
+               <Link href='/menu'>Back to Menu</Link>
+          </div>
+
      )
 }

@@ -1,9 +1,11 @@
 export default async function loading() {
      const result = await  setTimeout(() => {
-          <p>loading.....</p>
-     }, 2000);
+
+     }, 80000);
 
      return (
-          <h1>The page {result}</h1>
+          <div style={{ padding: '2rem', background: '#e0f2fe', color: '#0369a1', borderRadius: '8px' }}>
+               ⏳ Loading Addis Eats delicious updates... Please wait.
+          </div>
      )
 }
