@@ -1,77 +1,64 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useCartStore } from '../store/cartStore';
 
-function getDishImage(name) {
-  const lower = name.toLowerCase();
+const Dish = ({ dish, isBestseller }) => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  const { favorites, toggleFavorite } = useCartStore();
 
-  if (lower.includes('doro') || lower.includes('chicken')) {
-    return '/image_doro.jpg';
-  }
+  if (!dish) return null;
 
-  if (lower.includes('tibs') || lower.includes('awaze') || lower.includes('meat')) {
-    return '/image_tibs.jpg';
-  }
+  // Check if this specific dish is in the favorites array
+  const isFavorite = favorites.some((item) => item.id === dish.id);
 
-  // Added 'misir', 'wot', and 'wat' to load the rich red stew image
-  if (lower.includes('shiro') || lower.includes('shiro') || lower.includes('wot') || lower.includes('wat')) {
-    return '/image_shiro.jpg';
-  }
-
-  // Added 'veggie' and 'combo' to load the fasting platter image
-  if (lower.includes('vegan') || lower.includes('beyaynetu') || lower.includes('fasting') || lower.includes('veggie') || lower.includes('combo')) {
-    return '/image_vegan.jpg';
-  }
-
-  if (lower.includes('genfo') || lower.includes('porridge')) {
-    return '/image_genfo.jpg';
-  }
-
-  if (lower.includes('kikil') || lower.includes('alicha') || lower.includes('soup')) {
-    return '/image_kikil.jpg';
-  }
-
-  if (lower.includes('kitfo') || lower.includes('special') || lower.includes('platter')) {
-    return '/image_kitfo.jpg';
-  }
-
-  // Updated fallback to an image that actually exists in your public folder
-  return '/image_vegan.jpg';
-}
-
-function Dish({ name, price, currency, spicy }) {
   return (
-    <div className="dish">
-      <div className="dish-image-wrapper">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-md shadow-slate-200/50 border border-slate-100 flex flex-col transition-transform hover:-translate-y-1 hover:shadow-xl duration-300 group">
+
+      <div className="relative h-48 overflow-hidden bg-slate-100">
         <img
-          src={getDishImage(name)}
-          alt={name}
-          className="dish-photo"
-          loading="lazy"
+          src={dish.image}
+          alt={dish.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300/f8fafc/f97316?text=Addis+Eats'; }}
         />
-      </div>
-      <div className="dish-info">
-        <h3 className="dish-name">
-          {name}
-        </h3>
-        <div className="dish-meta">
-          <p className="dish-price">{price} {currency}</p>
-          {spicy && <span className="spicy-badge">🌶️ Spicy</span>}
+
+        {/* Top Left: Favorite Heart Button */}
+        <button
+          onClick={() => toggleFavorite(dish)}
+          className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm hover:bg-orange-50 transition-colors z-10"
+        >
+          <svg className={`w-5 h-5 ${isFavorite ? 'text-red-500 fill-current' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </button>
+
+        {/* Top Right: Bestseller Badge OR Price */}
+        <div className="absolute top-3 right-3 flex flex-col gap-2 items-end">
+          {isBestseller && (
+            <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm flex items-center gap-1">
+              🔥 Bestseller
+            </span>
+          )}
+          <span className="bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-slate-800 shadow-sm">
+            {dish.price} ETB
+          </span>
         </div>
+      </div>
+
+      <div className="p-5 flex flex-col flex-grow">
+        <h3 className="text-xl font-bold text-slate-800 mb-2">{dish.name}</h3>
+        <p className="text-slate-500 text-sm mb-6 flex-grow line-clamp-2">
+          {dish.description}
+        </p>
+
+        <button
+          onClick={() => addToCart(dish)}
+          className="w-full py-3 bg-orange-50 hover:bg-orange-600 text-orange-600 hover:text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 active:scale-95"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
-}
-
-Dish.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  currency: PropTypes.string,
-  spicy: PropTypes.bool,
 };
 
-Dish.defaultProps = {
-  currency: 'ETB',
-  spicy: false,
-};
-
-export default memo(Dish);
+export default Dish;

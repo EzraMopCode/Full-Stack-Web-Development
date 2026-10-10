@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -14,6 +13,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import DishDetail from './pages/DishDetail';
 import Cart from './pages/Cart';
+import Favorites from './pages/Favorites'; // NEW: Import the Favorites page
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
@@ -60,6 +60,8 @@ function App() {
                 path="cart"
                 element={<ErrorBoundary fallback={cartFallback}><Cart /></ErrorBoundary>}
               />
+              {/* NEW: Favorites Route */}
+              <Route path="favorites" element={<Favorites />} />
               <Route path="login" element={<Login />} />
               <Route
                 path="checkout"

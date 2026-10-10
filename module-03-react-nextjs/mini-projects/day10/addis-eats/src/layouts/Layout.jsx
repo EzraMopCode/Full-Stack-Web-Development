@@ -1,35 +1,24 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import CartBadge from '../components/CartBadge';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from '../components/Header';
 
-function navClass({ isActive }) {
-  return isActive ? 'nav-link nav-active' : 'nav-link';
-}
-
-function Layout() {
+const Layout = () => {
   return (
-    <div className="app">
-      <header className="header">
-        <div className="header-top">
-          <h1 className="logo">
-            <span className="logo-icon">🍽️</span> Addis Eats
-          </h1>
-          <div className="header-actions">
-            <CartBadge />
-          </div>
-        </div>
-        <nav className="main-nav">
-          <NavLink to="/" end className={navClass}>Home</NavLink>
-          <NavLink to="/menu" className={navClass}>Menu</NavLink>
-          <NavLink to="/cart" className={navClass}>Cart</NavLink>
-          <NavLink to="/checkout" className={navClass}>Checkout</NavLink>
-        </nav>
-      </header>
+    <div className="min-h-screen flex flex-col font-sans text-slate-900">
+      {/* The Header we styled earlier */}
+      <Header />
 
-      <main>
+      {/* The current page content (Home, Menu, Cart, etc.) will render here */}
+      <main className="flex-grow">
         <Outlet />
       </main>
+
+      {/* We can build out a Footer here later */}
+      <footer className="bg-slate-900 text-slate-400 text-center py-6 mt-auto">
+        <p>© {new Date().getFullYear()} Addis Eats. All rights reserved.</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default Layout;

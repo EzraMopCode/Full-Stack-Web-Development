@@ -1,25 +1,28 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 
-function CategoryBar({ categories, selected, onSelect }) {
+const CategoryBar = ({ activeCategory, setActiveCategory }) => {
+  // You can adjust these categories based on your actual dishes.json data
+  const categories = ['All', 'Traditional', 'Fast Food', 'Vegan', 'Drinks'];
+
   return (
-    <div className="category-bar">
-      {categories.map((cat) => (
+    <div className="flex gap-3 overflow-x-auto pb-2 pt-1 no-scrollbar snap-x">
+      {categories.map((category) => (
         <button
-          key={cat}
-          className={`chip ${cat === selected ? 'chip-active' : ''}`}
-          onClick={() => onSelect(cat)}
+          key={category}
+          onClick={() => setActiveCategory(category)}
+          className={`whitespace-nowrap px-6 py-2.5 rounded-full font-semibold text-sm transition-all snap-start
+            ${
+              activeCategory === category
+                ? 'bg-orange-600 text-white shadow-md shadow-orange-600/30 border-transparent'
+                : 'bg-white text-slate-600 hover:bg-orange-50 hover:text-orange-600 border border-slate-200'
+            }
+          `}
         >
-          {cat}
+          {category}
         </button>
       ))}
     </div>
   );
-}
-
-CategoryBar.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selected: PropTypes.string.isRequired,
-  onSelect: PropTypes.func.isRequired,
 };
 
 export default CategoryBar;

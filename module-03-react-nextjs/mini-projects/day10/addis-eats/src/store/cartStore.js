@@ -1,23 +1,26 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
-export const useCartStore = create(
-  persist(
-    (set) => ({
-      items: [],
-      addItem: (dish) => set((state) => ({ items: [...state.items, dish] })),
-      remove: (id) => set((state) => ({ items: state.items.filter((d) => d.id !== id) })),
-      clear: () => set({ items: [] }),
-    }),
-    { name: 'addis-eats-cart' }
-  )
-);
+export const useCartStore = create((set) => ({
+  // --- CART STATE ---
+  cart: [],
+  addToCart: (dish) => set((state) => {
+    const existingItem = state.cart.find(item => item.id === dish.id);
+    if (existingItem) {
+      return { cart: state.cart.map(item => item.id === dish.id ? { ...item, quantity: item.quantity + 1 } : item) };
+    }
+    return { cart: [...state.cart, { ...dish, quantity: 1 }] };
+  }),
+  removeFromCart: (id) => set((state) => ({ cart: state.cart.filter(item => item.id !== id) })),
+  updateQuantity: (id, quantity) => set((state) => ({ cart: state.cart.map(item => item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item) })),
+  clearCart: () => set({ cart: [] }),
 
-// Narrow selector hooks — each consumer subscribes to only what it reads.
-export const useCartItems = () => useCartStore((state) => state.items);
-export const useCartCount = () => useCartStore((state) => state.items.length);
-export const useCartTotal = () =>
-  useCartStore((state) => state.items.reduce((sum, dish) => sum + dish.price, 0));
-export const useAddItem = () => useCartStore((state) => state.addItem);
-export const useRemoveItem = () => useCartStore((state) => state.remove);
-export const useClearCart = () => useCartStore((state) => state.clear);
+  // --- FAVORITES STATE ---
+  favorites: [],
+  toggleFavorite: (dish) => set((state) => {
+    const isFav = state.favorites.some(item => item.id === dish.id);
+    if (isFav) {
+      return { favorites: state.favorites.filter(item => item.id !== dish.id) };
+    }
+    return { favorites: [...state.favorites, dish] };
+  }),
+}));
