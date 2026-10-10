@@ -1,7 +1,5 @@
-import React from 'react';
 
 const CategoryBar = ({ activeCategory, setActiveCategory }) => {
-  // You can adjust these categories based on your actual dishes.json data
   const categories = ['All', 'Traditional', 'Fast Food', 'Vegan', 'Drinks'];
 
   return (

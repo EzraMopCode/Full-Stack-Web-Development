@@ -1,4 +1,3 @@
-import React from 'react';
 import Dish from './Dish';
 
 const DishList = ({ dishes }) => {

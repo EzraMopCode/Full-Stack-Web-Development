@@ -1,4 +1,3 @@
-import React from 'react';
 import { useCartStore } from '../store/cartStore';
 
 const Dish = ({ dish, isBestseller }) => {
@@ -7,7 +6,6 @@ const Dish = ({ dish, isBestseller }) => {
 
   if (!dish) return null;
 
-  // Check if this specific dish is in the favorites array
   const isFavorite = favorites.some((item) => item.id === dish.id);
 
   return (
@@ -21,7 +19,6 @@ const Dish = ({ dish, isBestseller }) => {
           onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300/f8fafc/f97316?text=Addis+Eats'; }}
         />
 
-        {/* Top Left: Favorite Heart Button */}
         <button
           onClick={() => toggleFavorite(dish)}
           className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm hover:bg-orange-50 transition-colors z-10"
@@ -31,7 +28,6 @@ const Dish = ({ dish, isBestseller }) => {
           </svg>
         </button>
 
-        {/* Top Right: Bestseller Badge OR Price */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 items-end">
           {isBestseller && (
             <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm flex items-center gap-1">
