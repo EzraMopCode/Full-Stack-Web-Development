@@ -13,7 +13,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import DishDetail from './pages/DishDetail';
 import Cart from './pages/Cart';
-import Favorites from './pages/Favorites'; // NEW: Import the Favorites page
+import Favorites from './pages/Favourites';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 

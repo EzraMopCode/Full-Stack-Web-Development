@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 
 export const useCartStore = create((set) => ({
-  // --- CART STATE ---
   cart: [],
   addToCart: (dish) => set((state) => {
     const existingItem = state.cart.find(item => item.id === dish.id);
@@ -14,7 +13,6 @@ export const useCartStore = create((set) => ({
   updateQuantity: (id, quantity) => set((state) => ({ cart: state.cart.map(item => item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item) })),
   clearCart: () => set({ cart: [] }),
 
-  // --- FAVORITES STATE ---
   favorites: [],
   toggleFavorite: (dish) => set((state) => {
     const isFav = state.favorites.some(item => item.id === dish.id);

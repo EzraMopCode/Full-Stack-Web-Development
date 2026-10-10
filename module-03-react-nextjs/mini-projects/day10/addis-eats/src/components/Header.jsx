@@ -16,12 +16,11 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
 
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="/logo.jpg"
+              src="/logo.png"
               alt="Addis Eats Logo"
-              className="h-14 w-14 object-cover rounded-2xl shadow-sm"
+              className="h-17 w-17"
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';

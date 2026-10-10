@@ -1,27 +1,19 @@
-import  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import CategoryBar from '../components/CategoryBar';
 import DishList from '../components/DishList';
+import { menuData } from '../data/menuData'; // <-- Import the new data
 
 const Menu = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [dishes, setDishes] = useState([]);
 
+  // Fetch from our centralized data file
   useEffect(() => {
-    const fetchDishes = async () => {
-      const menuData = [
-        { id: 1, name: "Doro Wat", price: 240, category: "Traditional", image: "/image_doro.jpg", description: "Spicy chicken stew slow-cooked in berbere sauce." },
-        { id: 2, name: "Tibs", price: 220, category: "Traditional", image: "/image_tibs.jpg", description: "Sizzling meat pan-fried with onions and jalapeños." },
-        { id: 3, name: "Shiro", price: 150, category: "Vegan", image: "/image_shiro.jpg", description: "Rich, bubbling chickpea stew served hot." },
-        { id: 4, name: "Kitfo", price: 260, category: "Traditional", image: "/image_kitfo.jpg", description: "Minced lean beef seasoned with mitmita." },
-        { id: 5, name: "Veggie Combo", price: 180, category: "Vegan", image: "/image_vegan.jpg", description: "Assorted vegan stews served on fresh injera." },
-        { id: 6, name: "Kikil", price: 740, category: "Traditional", image: "/image_kikil.jpg", description: "Traditional Ethiopian boiled meat soup." }
-      ];
-      setDishes(menuData);
-    };
-    fetchDishes();
+    setDishes(menuData);
   }, []);
 
+  // Filter Logic
   const filteredDishes = dishes.filter(dish => {
     const matchesCategory = activeCategory === 'All' || dish.category === activeCategory;
     const matchesSearch = dish.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -32,6 +24,7 @@ const Menu = () => {
     <div className="min-h-screen bg-slate-50 pt-8 pb-20 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Menu Header & Search Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-800">Our Menu</h1>
@@ -54,6 +47,7 @@ const Menu = () => {
           </div>
         </div>
 
+        {/* Sticky Category Bar */}
         <div className="sticky top-20 z-30 bg-slate-50/95 backdrop-blur-md py-4 mb-6 border-b border-slate-200/50 -mx-4 px-4 sm:mx-0 sm:px-0">
           <CategoryBar
             activeCategory={activeCategory}
