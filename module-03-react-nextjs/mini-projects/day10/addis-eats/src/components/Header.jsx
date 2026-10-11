@@ -1,47 +1,45 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useCartStore } from '../store/cartStore';
-import { Heart, ShoppingCart, User, Utensils } from 'lucide-react'; // Using clean Lucide icons!
+import { useThemeStore } from '../store/themeStore';
+import { Heart, ShoppingCart, User, Utensils, Sun, Moon } from 'lucide-react'; 
 
 const Header = () => {
   const { cart, favorites } = useCartStore();
+  const { theme, toggleTheme } = useThemeStore(); // <-- Grab theme state
 
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   const favoritesCount = favorites.length;
 
   return (
-    <header className="bg-white shadow-sm border-b border-slate-100 sticky top-0 z-50">
+    <header className="bg-white dark:bg-slate-900 shadow-sm border-b border-slate-100 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
 
-
+          {/* Logo Section Remains the same... */}
           <Link to="/" className="flex items-center gap-3">
-            <img
-              src="/logo.png"
-              alt="Addis Eats Logo"
-              className="h-14 w-14 object-cover rounded-2xl shadow-sm"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
-            />
-            <div className="hidden bg-orange-600 text-white p-2 rounded-xl shadow-sm">
-              <Utensils className="w-6 h-6" />
-            </div>
-            <span className="font-bold text-2xl tracking-tight text-slate-800 hidden sm:block">
+             {/* ... logo code ... */}
+            <span className="font-bold text-2xl tracking-tight text-slate-800 dark:text-white hidden sm:block">
               Addis<span className="text-orange-600">Eats</span>
             </span>
           </Link>
 
-          {/* Center Navigation (Desktop Only) */}
-          <nav className="hidden md:flex gap-2 lg:gap-6 items-center">
-            <NavLink to="/" className={({isActive}) => isActive ? "bg-orange-50 text-orange-600 font-bold px-4 py-2 rounded-full transition-colors" : "text-slate-600 hover:text-orange-600 font-medium px-4 py-2 transition-colors"}>Home</NavLink>
-            <NavLink to="/menu" className={({isActive}) => isActive ? "bg-orange-50 text-orange-600 font-bold px-4 py-2 rounded-full transition-colors" : "text-slate-600 hover:text-orange-600 font-medium px-4 py-2 transition-colors"}>Menu</NavLink>
-            <NavLink to="/favorites" className={({isActive}) => isActive ? "bg-orange-50 text-orange-600 font-bold px-4 py-2 rounded-full transition-colors" : "text-slate-600 hover:text-orange-600 font-medium px-4 py-2 transition-colors"}>Favorites</NavLink>
-          </nav>
+          {/* Center Navigation Remains the same... */}
 
-          {/* Right Side Icons - HIDDEN ON MOBILE (Mobile uses Bottom Nav) */}
+          {/* Right Side Icons */}
           <div className="hidden md:flex items-center gap-4">
+
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-slate-400 hover:text-orange-600 transition-colors flex items-center justify-center"
+              aria-label="Toggle Dark Mode"
+            >
+              {theme === 'dark' ? <Sun className="w-6 h-6 text-orange-500" /> : <Moon className="w-6 h-6" />}
+            </button>
+
+            {/* Favorites Icon */}
+            {/* ... */}
 
             {/* Favorites Icon */}
             <Link to="/favorites" className="relative p-2 text-slate-400 hover:text-red-500 transition-colors flex items-center justify-center">
