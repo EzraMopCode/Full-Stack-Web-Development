@@ -18,6 +18,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
 import './App.css';
+import Profile from './pages/Profile';
 
 const Checkout = lazy(() => import('./pages/Checkout'));
 const Receipt = lazy(() => import('./pages/Receipt'));
@@ -62,6 +63,7 @@ function App() {
               />
               {/* NEW: Favorites Route */}
               <Route path="favorites" element={<Favorites />} />
+              <Route path="profile" element={<Profile/>} />
               <Route path="login" element={<Login />} />
               <Route
                 path="checkout"
