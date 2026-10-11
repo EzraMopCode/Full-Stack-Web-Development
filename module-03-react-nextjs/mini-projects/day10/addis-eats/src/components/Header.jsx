@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useCartStore } from '../store/cartStore';
 import { useThemeStore } from '../store/themeStore';
-import { Heart, ShoppingCart, User, Utensils, Sun, Moon } from 'lucide-react';
+import { Heart, ShoppingCart, User, Sun, Moon } from 'lucide-react';
 
 const Header = () => {
   const { cart, favorites } = useCartStore();

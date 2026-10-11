@@ -1,6 +1,6 @@
 # 🍽️ Addis Eats
 
-🌍 **Live Demo:** [View Addis Eats on Vercel](https://your-addis-eats-link.vercel.app)
+🌍 **Live Demo:** [View Addis Eats on Vercel] (https://full-stack-web-development-gray.vercel.app/)
 
 Welcome to **Addis Eats**! 👋
 
