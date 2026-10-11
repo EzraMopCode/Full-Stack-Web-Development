@@ -26,7 +26,7 @@ function Nav() {
           <a href="#contact" className="hover:text-orange-400 transition-colors">Contact</a>
 
           <a
-            href="/resume.pdf"
+            href="./Ezra Mesele Cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 border border-orange-500/50 text-orange-500 hover:bg-orange-500/10 rounded-lg transition-colors"
