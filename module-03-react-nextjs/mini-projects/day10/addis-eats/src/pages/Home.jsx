@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Card from '../components/Card'; // Assuming your Card component is here
 
 const Home = () => {
-  // Mock data for the featured section - replace with a fetch to your dishes.json later
   const featuredDishes = [
     { id: 1, name: "Special Kitfo", price: 350, image: "/image_kitfo.jpg", description: "Minced lean beef seasoned with mitmita and niter kibbeh." },
     { id: 2, name: "Shekla Tibs", price: 300, image: "/image_tibs.jpg", description: "Sizzling meat pan-fried with onions, garlic, and jalapeños." },

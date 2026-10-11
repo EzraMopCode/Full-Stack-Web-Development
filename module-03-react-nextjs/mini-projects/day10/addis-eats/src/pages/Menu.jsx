@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import CategoryBar from '../components/CategoryBar';
 import DishList from '../components/DishList';
-import { menuData } from '../data/menuData'; // <-- Import the new data
+import { menuData } from '../data/menuData'; 
 
 const Menu = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [dishes, setDishes] = useState([]);
 
-  // Fetch from our centralized data file
   useEffect(() => {
     setDishes(menuData);
   }, []);
 
-  // Filter Logic
   const filteredDishes = dishes.filter(dish => {
     const matchesCategory = activeCategory === 'All' || dish.category === activeCategory;
     const matchesSearch = dish.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -24,7 +22,6 @@ const Menu = () => {
     <div className="min-h-screen bg-slate-50 pt-8 pb-20 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Menu Header & Search Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-800">Our Menu</h1>
@@ -47,7 +44,6 @@ const Menu = () => {
           </div>
         </div>
 
-        {/* Sticky Category Bar */}
         <div className="sticky top-20 z-30 bg-slate-50/95 backdrop-blur-md py-4 mb-6 border-b border-slate-200/50 -mx-4 px-4 sm:mx-0 sm:px-0">
           <CategoryBar
             activeCategory={activeCategory}
