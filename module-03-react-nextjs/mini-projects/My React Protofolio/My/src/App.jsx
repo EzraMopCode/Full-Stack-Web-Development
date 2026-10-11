@@ -9,7 +9,7 @@ import './index.css';
 
 function App() {
   return (
-    <div className="app">
+    <div className="bg-slate-950 min-h-screen font-sans selection:bg-orange-500/30">
       <Nav />
       <Hero />
       <About />
@@ -20,5 +20,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
