@@ -16,7 +16,6 @@ export const useThemeStore = create((set) => ({
     return { theme: newTheme };
   }),
 
-  // Runs once when the app loads to check saved preferences
   initTheme: () => {
     const theme = localStorage.getItem('theme') || 'light';
     if (theme === 'dark') {
