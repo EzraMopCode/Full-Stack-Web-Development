@@ -28,7 +28,6 @@ const Header = () => {
             </span>
           </Link>
 
-          {/* Center Navigation */}
           <nav className="hidden md:flex gap-2 lg:gap-6 items-center">
             <NavLink
               to="/"

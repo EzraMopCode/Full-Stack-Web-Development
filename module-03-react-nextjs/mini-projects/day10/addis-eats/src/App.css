@@ -1,6 +1,5 @@
 @import "tailwindcss";
-
-/* This tells Tailwind v4 to use our toggle button's .dark class */
-@variant dark (&:is(.dark *));
-
-/* ... any of your other custom CSS stays below this ... */
+@source "./src/pages";
+@source "./src/components";
+@source "./src/layouts";
+@source "./src/Ui";
