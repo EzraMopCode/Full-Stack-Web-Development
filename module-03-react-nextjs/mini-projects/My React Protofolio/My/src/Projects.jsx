@@ -6,7 +6,7 @@ const projects = [
     name: 'Addis Eats',
     description: 'A comprehensive food delivery frontend with client-side routing. Features an app-like mobile UX, instant cart updates using Zustand, and dynamic Next.js layout strategies.',
     tags: ['React', 'Next.js', 'Zustand', 'Tailwind'],
-    link: 'https://github.com/EzraMopCode/addis-eats',
+    link: 'https://full-stack-web-development-nqat.vercel.app/',
     status: 'completed'
   },
   {
