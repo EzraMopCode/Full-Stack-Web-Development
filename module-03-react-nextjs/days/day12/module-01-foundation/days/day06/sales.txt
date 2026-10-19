@@ -1,0 +1,2 @@
+Report: Sales Report
+Data: Sales increased by 20%.

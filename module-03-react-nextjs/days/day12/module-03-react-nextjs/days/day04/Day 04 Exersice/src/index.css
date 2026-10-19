@@ -1,0 +1,89 @@
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.header {
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.category-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-bar button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.category-bar button.active {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+.dish-list {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fafafa;
+}
+
+.dish h3 {
+  margin: 0 0 10px 0;
+}
+
+.dish p {
+  margin: 0 0 15px 0;
+  font-weight: bold;
+}
+
+.dish button {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  background: #eee;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.order-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.order-form button {
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

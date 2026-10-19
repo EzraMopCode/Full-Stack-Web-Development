@@ -1,17 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-export const metadata = {
-  title: "Addis Eats",
-  description: "Way Beeter food delivery system",
-};
+import './globals.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="body">
-          
+      <body className="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
           {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

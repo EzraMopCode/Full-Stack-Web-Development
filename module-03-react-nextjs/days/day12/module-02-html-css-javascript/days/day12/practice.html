@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An accessible HTML page demonstrating forms, tables, media, semantic elements, and accessibility best practices.">
+    <title>Ethiopia Travel and Services Demo</title>
+</head>
+<body>
+     <section>
+          <h1>Ethio Telecom Registration</h1>
+          <form action="#" method="post">
+               <div>
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required>
+               </div>
+               <br>
+               <div>
+                    <label for="email">Email Address:</label>
+                    <input type = "email" id ="email" required>
+               </div>
+
+               <br>
+               <div>
+                    <label for="phone">Telephone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+251912345678" pattern="^\+2519\d{8}$" required>
+               </div>
+
+               <br>
+               <div>
+                    <label for="branch">Choose Branch:</label>
+                    <select id="branch" name="branch" required>
+                         <option value="">-- Select Branch --</option>
+                         <option value="bole">Bole</option>
+                         <option value="kazanchis">Kazanchis</option>
+                         <option value="piassa">Piassa</option>
+                    </select>
+               </div>
+
+               <br>
+               <button type="submit">Register</button>
+          </form>
+     </section>
+
+
+    <!--- Ethiopian Airlines -->
+    <section>
+          <h1>Ethiopian Airlines Flights</h1>
+          <table border="1">
+               <caption>Ethiopian Airlines Flight Schedule</caption>
+               <thead>
+                    <tr>
+                         <th scope="col">Flight</th>
+                         <th scope="col">From</th>
+                         <th scope="col">To</th>
+                         <th scope="col">Departs</th>
+                         <th scope="col">Price (ETB)</th>
+                    </tr>
+               </thead>
+
+               <tbody>
+                    <tr>
+                         <td>ET101</td>
+                         <td>Addis Ababa</td>
+                         <td>Bahir Dar</td>
+                         <td>08:00 AM</td>
+                         <td>4,500</td>
+                    </tr>
+
+                    <tr>
+                         <td>ET202</td>
+                         <td>Addis Ababa</td>
+                         <td>Dire Dawa</td>
+                         <td>10:30 AM</td>
+                         <td>3,800</td>
+                    </tr>
+
+                    <tr>
+                         <td>ET303</td>
+                         <td>Addis Ababa</td>
+                         <td>Mekelle</td>
+                         <td>01:15 PM</td>
+                         <td>5,200</td>
+                    </tr>
+
+                    <tr>
+                         <td>ET404</td>
+                         <td>Addis Ababa</td>
+                         <td>Hawassa</td>
+                         <td>03:45 PM</td>
+                         <td>3,200</td>
+                    </tr>
+
+                    <tr>
+                         <td>ET505</td>
+                         <td>Addis Ababa</td>
+                         <td>Jimma</td>
+                         <td>06:20 PM</td>
+                         <td>4,000</td>
+                    </tr>
+               </tbody>
+
+          </table>
+    </section>
+    <!-----  Visitation -->
+
+    <section>
+          <h2>Visit Lalibela</h2>
+
+          <figure>
+               <img src="./lalibela.jpg" alt="The rock-hewn Church of Saint George in Lalibela, Ethiopia"width="500">
+               <figcaption>
+                    The famous Church of Saint George in Lalibela, Ethiopia.
+               </figcaption>
+          </figure>
+
+          <h3>Location Map</h3>
+
+          <iframe
+               src="https://www.google.com/maps?q=Lalibela,Ethiopia&output=embed"
+               width="600"
+               height="450"
+               title="Map showing the location of Lalibela, Ethiopia"
+               loading="lazy">
+          </iframe>
+
+     </section>
+
+     <section>
+          <h2>Accessibility Improvements</h2>
+
+          <!--
+               Fix 1:
+               Replaced a div with a button.
+               This makes it keyboard accessible and
+               lets screen readers recognize it as a button.
+          -->
+          <button type="button"> Submit</button>
+          <br><br>
+
+          <!--
+               Fix 2:
+               Added a label to the input.
+               Screen readers can now identify what information
+               the user should enter.
+          -->
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username">
+          <br><br>
+
+          <!--
+               Fix 3:
+               Added meaningful alt text.
+               Screen readers can describe the image to users
+               who cannot see it.
+          -->
+          <img src="./coffee.jpg" alt="A cup of traditional Ethiopian coffee served during a coffee ceremony." width="300">
+     </section>
+</body>
+</html>

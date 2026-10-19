@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@source "./src/pages";
+@source "./src/components";
+@source "./src/layouts";
+@source "./src/Ui";

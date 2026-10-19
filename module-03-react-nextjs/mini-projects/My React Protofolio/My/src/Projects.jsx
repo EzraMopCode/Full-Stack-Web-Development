@@ -35,7 +35,6 @@ function Projects() {
         <h2 className="text-3xl md:text-4xl font-bold text-slate-100">Things I've Built</h2>
       </div>
 
-      {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
           <a
@@ -45,7 +44,6 @@ function Projects() {
             target="_blank"
             rel="noreferrer"
           >
-            {/* Card Top: Icons */}
             <div className="flex justify-between items-center mb-6">
               <FontAwesomeIcon
                 icon={faFolderOpen}
@@ -57,7 +55,6 @@ function Projects() {
               />
             </div>
 
-            {/* Card Middle: Title & Badge */}
             <div className="flex items-start justify-between gap-3 mb-3">
               <h3 className="text-xl font-bold text-slate-100 group-hover:text-orange-400 transition-colors duration-300">
                 {project.name}
@@ -69,12 +66,10 @@ function Projects() {
               )}
             </div>
 
-            {/* Card Middle: Description */}
             <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
               {project.description}
             </p>
 
-            {/* Card Bottom: Tech Tags */}
             <div className="flex flex-wrap gap-2 mt-auto">
               {project.tags.map((tag) => (
                 <span
