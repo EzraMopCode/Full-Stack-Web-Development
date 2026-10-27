@@ -1,0 +1,113 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import Card from '../components/Card';
+
+export const metadata = {
+  title: 'Home | Addis Eats',
+  description: 'Authentic Ethiopian food delivered fresh to your door.',
+};
+
+export default function Home() {
+  const featuredDishes = [
+    { id: 1, name: "Special Kitfo", price: 350, image: "/image_kitfo.jpg", description: "Minced lean beef seasoned with mitmita and niter kibbeh." },
+    { id: 2, name: "Shekla Tibs", price: 300, image: "/image_tibs.jpg", description: "Sizzling meat pan-fried with onions, garlic, and jalapeños." },
+    { id: 3, name: "Doro Wat", price: 400, image: "/image_doro.jpg", description: "Spicy chicken stew slow-cooked in berbere sauce with a boiled egg." },
+    { id: 5, name: "Special Combo", price: 2080, image: "/special-combo.jpg", description: "A vibrant platter of assorted traditional stews served on fresh injera." }
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 font-sans transition-colors">
+      {/* Hero Section */}
+      <section className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Day 18 Requirement: priority on the ONE largest above-the-fold image, and nothing else */}
+        <div className="absolute inset-0">
+          <Image
+            src="/image_tibs.jpg"
+            alt="Sizzling Ethiopian Shekla Tibs pan-fried with rosemary and jalapeños"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-900/50" />
+        </div>
+
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto mt-16">
+          <span className="text-orange-500 font-semibold tracking-wider uppercase text-sm mb-4 block">
+            Authentic Ethiopian Cuisine
+          </span>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Craving <span className="text-orange-500">Addis?</span><br />
+            We Deliver.
+          </h1>
+          <p className="text-lg md:text-xl text-slate-300 mb-10">
+            From sizzling Tibs to comforting Shiro, get your favorite traditional dishes delivered hot and fresh to your door.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/menu"
+              className="px-8 py-4 bg-orange-600 hover:bg-orange-700 transition-colors text-white font-bold rounded-full shadow-lg shadow-orange-500/30 text-lg"
+            >
+              Order Now
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-24 px-4 max-w-7xl mx-auto w-full">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">How It Works</h2>
+          <p className="text-slate-500 dark:text-slate-400">Your favorite meals in three simple steps</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col items-center text-center transition-transform hover:-translate-y-2">
+            <div className="w-16 h-16 bg-orange-100 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+            </div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">1. Choose a Dish</h3>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Browse our menu of authentic, locally sourced Ethiopian meals.</p>
+          </div>
+
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col items-center text-center transition-transform hover:-translate-y-2">
+            <div className="w-16 h-16 bg-orange-100 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            </div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">2. Place Order</h3>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Quick and secure checkout with Telebirr or CBE Birr.</p>
+          </div>
+
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col items-center text-center transition-transform hover:-translate-y-2">
+            <div className="w-16 h-16 bg-orange-100 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">3. Fast Delivery</h3>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Straight from the kitchen to your table in 30–45 minutes.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Dishes Section */}
+      <section className="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-white">Customer Favorites</h2>
+              <p className="text-slate-500 dark:text-slate-400 mt-2">The most ordered dishes in Addis Ababa this week</p>
+            </div>
+            <Link href="/menu" className="hidden sm:inline-flex items-center text-orange-600 dark:text-orange-500 font-semibold hover:underline">
+              View Full Menu &rarr;
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredDishes.map((dish) => (
+              <Card key={dish.id} dish={dish} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
