@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getSession } from '@/lib/session';
 import { logout } from '@/actions/authActions';
+import ThemeToggle from '@/components/ThemeToggle';
+import { LogOutIcon } from '@/components/Icons';
 
 export default async function Header() {
   const session = await getSession();
@@ -64,24 +66,43 @@ export default async function Header() {
             </Link>
           </nav>
 
-          {/* User Status / Auth Controls */}
-          <div className="flex items-center gap-3">
+          {/* User Status / Auth Controls / Theme Toggle */}
+          <div className="flex items-center gap-2.5">
+            <ThemeToggle />
+
             {session ? (
-              <div className="flex items-center gap-2">
-                <div className="hidden sm:block text-right">
-                  <span className="text-xs font-semibold text-slate-900 dark:text-white block">
-                    {session.name}
-                  </span>
-                  <span className="text-[10px] text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/60 px-1.5 py-0.5 rounded-full uppercase font-bold tracking-wider">
-                    {session.role}
-                  </span>
+              <div className="flex items-center gap-3 pl-2.5 border-l border-slate-200 dark:border-slate-800">
+                {/* User Identity Pill with Avatar Initials */}
+                <div className="flex items-center gap-2.5">
+                  <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-teal-700 to-teal-500 text-white font-bold text-xs flex items-center justify-center shadow-sm">
+                    {session.name.replace(/^(Dr\.|Nurse)\s*/i, '').split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase()}
+                    <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900" title="Active Clinical Session"></span>
+                  </div>
+                  <div className="hidden sm:block text-left">
+                    <span className="text-xs font-bold text-slate-900 dark:text-white block leading-tight">
+                      {session.name}
+                    </span>
+                    <span className={`inline-block mt-0.5 text-[9px] px-2 py-0.5 rounded-full uppercase font-extrabold tracking-wider ${
+                      session.role === 'doctor'
+                        ? 'bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800/80'
+                        : session.role === 'staff'
+                        ? 'bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/80'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700'
+                    }`}>
+                      {session.role}
+                    </span>
+                  </div>
                 </div>
+
+                {/* Refined Ghost Sign Out Button */}
                 <form action={logout}>
                   <button
                     type="submit"
-                    className="px-3 py-1.5 text-xs font-bold text-red-700 hover:text-red-800 dark:text-red-300 dark:hover:text-red-200 bg-red-50 hover:bg-red-100 dark:bg-red-950/70 dark:hover:bg-red-900/60 border border-red-200/60 dark:border-red-800/80 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 cursor-pointer min-h-[36px]"
+                    title="Sign out of AddisCare"
+                    className="px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 bg-slate-100 hover:bg-red-50 dark:bg-slate-800/80 dark:hover:bg-red-950/40 border border-slate-200/80 dark:border-slate-700 hover:border-red-200 dark:hover:border-red-900/60 rounded-xl transition-all duration-150 flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 min-h-[36px]"
                   >
-                    Sign Out
+                    <LogOutIcon className="w-3.5 h-3.5" />
+                    <span>Sign Out</span>
                   </button>
                 </form>
               </div>
