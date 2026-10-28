@@ -5,6 +5,7 @@ import {
 } from '@/data/clinicStore';
 import DepartmentRevenueChart from '@/components/DepartmentRevenueChart';
 import PatientVolumeChart from '@/components/PatientVolumeChart';
+import { ActivityIcon } from '@/components/Icons';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,7 +28,7 @@ export default async function ClinicDashboardPage({ searchParams }) {
     return (
       <div className="space-y-6">
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-sm max-w-lg mx-auto">
-          <span className="text-5xl block mb-3">📊</span>
+          <ActivityIcon className="w-12 h-12 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
           <h2 className="text-lg font-bold text-slate-800 dark:text-white">
             No Clinical Analytics Recorded
           </h2>

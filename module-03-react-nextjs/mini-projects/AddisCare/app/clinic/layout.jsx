@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/session';
+import { StethoscopeIcon, ClockIcon, ActivityIcon } from '@/components/Icons';
 
 export default async function ClinicStaffLayout({ children }) {
   const session = await getSession();
@@ -22,7 +23,7 @@ export default async function ClinicStaffLayout({ children }) {
         <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-slate-800">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl">🩺</span>
+              <StethoscopeIcon className="w-5 h-5 text-teal-400" />
               <span className="text-xs font-bold uppercase tracking-wider text-teal-400">
                 Authorized Clinical Portal
               </span>
@@ -38,16 +39,16 @@ export default async function ClinicStaffLayout({ children }) {
           <div className="flex items-center gap-3">
             <Link
               href="/clinic/queue"
-              className="min-h-[44px] px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
+              className="min-h-[44px] px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
             >
-              <span>📋</span>
+              <ClockIcon className="w-4 h-4 text-white" />
               <span>Patient Queue</span>
             </Link>
             <Link
               href="/clinic/dashboard"
-              className="min-h-[44px] px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="min-h-[44px] px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              <span>📊</span>
+              <ActivityIcon className="w-4 h-4 text-teal-400" />
               <span>Executive Dashboard</span>
             </Link>
           </div>

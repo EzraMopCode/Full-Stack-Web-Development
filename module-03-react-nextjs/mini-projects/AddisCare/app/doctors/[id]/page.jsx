@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllDoctors, getDoctorById } from '@/data/clinicStore';
 import { etb } from '@/lib/format';
+import { StarIcon, MapPinIcon, DoorIcon, ClockIcon } from '@/components/Icons';
 
 export async function generateStaticParams() {
   const doctors = getAllDoctors();
@@ -51,14 +52,27 @@ export default async function DoctorDetailPage({ params }) {
             {doctor.qualification}
           </p>
 
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-slate-300">
-            <span className="flex items-center gap-1 font-bold text-amber-600">
-              ★ {doctor.rating.toFixed(1)} ({doctor.reviewCount} verified reviews)
+          <div className="mt-4 flex flex-wrap items-center gap-4 text-xs">
+            <span className="flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400">
+              <StarIcon className="w-4 h-4 fill-amber-500 text-amber-500" />
+              <span>{doctor.rating.toFixed(1)}</span>
+              <span className="text-slate-500 dark:text-slate-400 font-normal">({doctor.reviewCount} verified reviews)</span>
             </span>
-            <span>·</span>
-            <span>📍 {doctor.branch}</span>
-            <span>·</span>
-            <span>🚪 {doctor.room}</span>
+            <span className="text-slate-300 dark:text-slate-700">·</span>
+            <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-semibold">
+              <MapPinIcon className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+              <span>{doctor.branch}</span>
+            </span>
+            <span className="text-slate-300 dark:text-slate-700">·</span>
+            <span className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 font-medium">
+              <DoorIcon className="w-4 h-4 text-slate-400" />
+              <span>Room {doctor.room}</span>
+            </span>
+            <span className="text-slate-300 dark:text-slate-700">·</span>
+            <span className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 font-medium">
+              <ClockIcon className="w-4 h-4 text-slate-400" />
+              <span>{doctor.experienceYears} Yrs Experience</span>
+            </span>
           </div>
         </div>
 

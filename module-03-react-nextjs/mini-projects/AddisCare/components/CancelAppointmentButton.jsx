@@ -39,7 +39,7 @@ export default function CancelAppointmentButton({ appointmentId, isCancelled }) 
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="min-h-[44px] px-4 py-2 text-xs font-semibold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/40 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 cursor-pointer"
+        className="min-h-[44px] px-4 py-2 text-xs font-bold text-red-700 hover:text-red-800 dark:text-red-300 dark:hover:text-red-200 bg-red-50 hover:bg-red-100 dark:bg-red-950/70 dark:hover:bg-red-900/60 border border-red-200/60 dark:border-red-800/80 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 cursor-pointer"
       >
         Cancel Consultation
       </button>

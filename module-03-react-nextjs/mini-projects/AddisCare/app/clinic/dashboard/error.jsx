@@ -1,9 +1,13 @@
 'use client';
 
+import { AlertCircleIcon } from '@/components/Icons';
+
 export default function ClinicDashboardError({ error, reset }) {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-red-100 dark:border-red-950/40 shadow-sm max-w-lg mx-auto space-y-4">
-      <span className="text-5xl block">⚠️</span>
+      <div className="w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto">
+        <AlertCircleIcon className="w-8 h-8" />
+      </div>
       <h2 className="text-xl font-bold text-red-600 dark:text-red-400">
         Clinical Analytics Ledger Error
       </h2>

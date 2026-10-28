@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/session';
+import { StethoscopeIcon, CalendarIcon, PillIcon, ActivityIcon } from '@/components/Icons';
 
 export default async function PatientPortalLayout({ children }) {
   const session = await getSession();
@@ -17,7 +18,7 @@ export default async function PatientPortalLayout({ children }) {
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-teal-100 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl">🩺</span>
+              <StethoscopeIcon className="w-5 h-5 text-teal-600" />
               <span className="text-xs font-bold uppercase tracking-wider text-teal-600">
                 Patient Medical Portal
               </span>
@@ -42,23 +43,23 @@ export default async function PatientPortalLayout({ children }) {
         <nav className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto no-scrollbar">
           <Link
             href="/portal/appointments"
-            className="min-h-[44px] px-5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+            className="min-h-[44px] px-5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
           >
-            <span>📅</span>
+            <CalendarIcon className="w-4 h-4 text-teal-600 dark:text-teal-400" />
             <span>My Appointments</span>
           </Link>
           <Link
             href="/portal/prescriptions"
-            className="min-h-[44px] px-5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+            className="min-h-[44px] px-5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
           >
-            <span>💊</span>
+            <PillIcon className="w-4 h-4 text-teal-600 dark:text-teal-400" />
             <span>Prescriptions & History</span>
           </Link>
           <Link
             href="/portal/vitals"
-            className="min-h-[44px] px-5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+            className="min-h-[44px] px-5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
           >
-            <span>📈</span>
+            <ActivityIcon className="w-4 h-4 text-teal-600 dark:text-teal-400" />
             <span>Vitals & Health Trends</span>
           </Link>
         </nav>

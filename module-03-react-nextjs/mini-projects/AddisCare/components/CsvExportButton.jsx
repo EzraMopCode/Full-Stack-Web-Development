@@ -1,6 +1,7 @@
 'use client';
 
 import { generateCsv, downloadCsv } from '@/lib/csv';
+import { DownloadIcon } from '@/components/Icons';
 
 export default function CsvExportButton({ records = [], type = 'consultations' }) {
   const handleExport = () => {
@@ -60,7 +61,7 @@ export default function CsvExportButton({ records = [], type = 'consultations' }
         onClick={handleExport}
         className="min-h-[44px] px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 cursor-pointer"
       >
-        <span>📥</span>
+        <DownloadIcon className="w-4 h-4 text-white" />
         <span>Export CSV</span>
       </button>
 

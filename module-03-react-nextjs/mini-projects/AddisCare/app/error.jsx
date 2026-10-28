@@ -1,9 +1,13 @@
 'use client';
 
+import { AlertCircleIcon } from '@/components/Icons';
+
 export default function GlobalError({ error, reset }) {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center space-y-4">
-      <span className="text-5xl">⚠️</span>
+      <div className="w-16 h-16 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+        <AlertCircleIcon className="w-8 h-8" />
+      </div>
       <h2 className="text-xl font-bold text-slate-900 dark:text-white">
         Something went wrong
       </h2>

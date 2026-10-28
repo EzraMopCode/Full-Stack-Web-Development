@@ -27,7 +27,7 @@ export default async function Header() {
               />
             </div>
             <div>
-              <span className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-1 leading-none">
+              <span className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-none inline-block">
                 Addis<span className="text-teal-600">Care</span>
               </span>
               <span className="text-[11px] uppercase font-bold tracking-wider text-teal-700 dark:text-teal-400 block mt-1">
@@ -79,7 +79,7 @@ export default async function Header() {
                 <form action={logout}>
                   <button
                     type="submit"
-                    className="px-3 py-1.5 text-xs font-semibold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/40 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 cursor-pointer min-h-[36px]"
+                    className="px-3 py-1.5 text-xs font-bold text-red-700 hover:text-red-800 dark:text-red-300 dark:hover:text-red-200 bg-red-50 hover:bg-red-100 dark:bg-red-950/70 dark:hover:bg-red-900/60 border border-red-200/60 dark:border-red-800/80 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 cursor-pointer min-h-[36px]"
                   >
                     Sign Out
                   </button>

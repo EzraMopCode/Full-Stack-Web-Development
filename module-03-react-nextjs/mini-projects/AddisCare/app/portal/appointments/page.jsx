@@ -4,6 +4,7 @@ import { getSession } from '@/lib/session';
 import CancelAppointmentButton from '@/components/CancelAppointmentButton';
 import CsvExportButton from '@/components/CsvExportButton';
 import { etb, when, relative } from '@/lib/format';
+import { StethoscopeIcon, LightningIcon } from '@/components/Icons';
 
 export const dynamic = 'force-dynamic';
 
@@ -53,7 +54,7 @@ export default async function MyAppointmentsPage({ searchParams }) {
       {/* Appointment Cards / Empty State */}
       {appointments.length === 0 ? (
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-sm max-w-lg mx-auto">
-          <span className="text-5xl block mb-3">🩺</span>
+          <StethoscopeIcon className="w-12 h-12 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
           <h3 className="text-lg font-bold text-slate-800 dark:text-white">
             No consultations recorded for your account
           </h3>
@@ -142,7 +143,7 @@ export default async function MyAppointmentsPage({ searchParams }) {
                     href={`/portal/appointments/${apt.id}/live`}
                     className="min-h-[44px] px-4 py-2 rounded-xl bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100 dark:hover:bg-teal-900/60 text-teal-700 dark:text-teal-300 text-xs font-bold transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
                   >
-                    <span>⚡</span>
+                    <LightningIcon className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
                     <span>Track Live Triage Progression &rarr;</span>
                   </Link>
 

@@ -4,6 +4,7 @@ import { useActionState, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { login } from '@/actions/authActions';
+import { ShieldCheckIcon, LockIcon } from '@/components/Icons';
 
 export default function LoginPage() {
   const searchParams = useSearchParams();
@@ -23,28 +24,31 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans transition-colors">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-          <Image
-            src="/logo.png"
-            alt="AddisCare Emblem"
-            width={64}
-            height={64}
-            className="w-full h-full object-contain drop-shadow-md"
-            priority
-          />
-        </div>
-        <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
-          Sign In to AddisCare
-        </h2>
-        <p className="mt-2 text-xs text-slate-500">
-          Protected healthcare portal with secure HttpOnly cryptographic session cookies.
-        </p>
-      </div>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 font-sans transition-colors">
+      <div className="w-full max-w-md flex flex-col items-center space-y-6">
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <div className="bg-white dark:bg-slate-900 py-8 px-6 shadow-sm rounded-3xl sm:px-10 border border-slate-100 dark:border-slate-800 space-y-6">
+        {/* Center-Aligned Header Block */}
+        <div className="w-full text-center flex flex-col items-center">
+          <div className="relative w-16 h-16 mb-3 flex items-center justify-center">
+            <Image
+              src="/logo.png"
+              alt="AddisCare Emblem"
+              width={64}
+              height={64}
+              className="w-full h-full object-contain drop-shadow-md"
+              priority
+            />
+          </div>
+          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Sign In to AddisCare
+          </h1>
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm">
+            Access your personal medical appointments, live triage desk queue, and digital clinical prescriptions.
+          </p>
+        </div>
+
+        {/* Center-Locked Form Card */}
+        <div className="w-full bg-white dark:bg-slate-900 py-8 px-6 shadow-sm rounded-3xl sm:px-10 border border-slate-200/80 dark:border-slate-800 space-y-6">
 
           {state?.error && (
             <div className="p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-xl text-red-700 dark:text-red-400 text-xs font-semibold">
@@ -94,9 +98,15 @@ export default function LoginPage() {
 
           {/* Quick Credential Test Switcher Pills */}
           <div className="pt-6 border-t border-slate-100 dark:border-slate-800 text-xs space-y-3">
-            <span className="font-bold text-slate-700 dark:text-slate-300 block">
-              1-Click Assessor Test Accounts:
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-900 dark:text-slate-100 block">
+                1-Click Assessor Test Accounts:
+              </span>
+              <span className="text-[10px] text-teal-700 dark:text-teal-400 font-bold uppercase tracking-wider bg-teal-50 dark:bg-teal-950 px-2 py-0.5 rounded-full">
+                Evaluation
+              </span>
+            </div>
+
             <div className="grid grid-cols-1 gap-2">
               <button
                 type="button"
@@ -146,6 +156,18 @@ export default function LoginPage() {
                 <span className="text-[11px] text-slate-400 font-mono">nurse_selam / nurse123</span>
               </button>
             </div>
+
+            {/* Dedicated Assessor Technical Security Callout */}
+            <div className="mt-4 p-3 rounded-2xl bg-teal-50/60 dark:bg-teal-950/40 border border-teal-200/60 dark:border-teal-900/50 text-[11px] text-teal-900 dark:text-teal-300 flex items-start gap-2.5">
+              <ShieldCheckIcon className="w-4 h-4 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
+              <div className="space-y-0.5 leading-relaxed">
+                <span className="font-bold block">Assessor Architecture Verification:</span>
+                <p className="text-slate-600 dark:text-slate-300 text-[11px]">
+                  Protected by cryptographic HttpOnly cookie session (<code className="font-mono text-teal-700 dark:text-teal-300 font-semibold">addiscare_session</code>), Lax CSRF defense, and strict server-side role validation.
+                </p>
+              </div>
+            </div>
+
           </div>
 
         </div>

@@ -3,11 +3,32 @@ import Image from 'next/image';
 import { getAllDoctors, SPECIALTIES } from '@/data/clinicStore';
 import DoctorCard from '@/components/DoctorCard';
 import { etb } from '@/lib/format';
+import {
+  HeartPulseIcon,
+  BabyIcon,
+  StethoscopeIcon,
+  ToothIcon,
+  DropletIcon,
+  BoneIcon,
+  AmbulanceIcon,
+  MapPinIcon,
+  LightningIcon,
+  ArrowRightIcon
+} from '@/components/Icons';
 
 export const metadata = {
   title: 'AddisCare — Premier Medical Clinic Diary & Doctor Booking',
   description: 'Book certified doctors, schedule specialist consultations, and track live clinical triage in Addis Ababa.'
 };
+
+const CLINICAL_DEPARTMENTS = [
+  { name: 'Cardiology', Icon: HeartPulseIcon, desc: 'Heart & hypertension' },
+  { name: 'Pediatrics', Icon: BabyIcon, desc: 'Child wellness & care' },
+  { name: 'General Medicine', Icon: StethoscopeIcon, desc: 'Primary & family care' },
+  { name: 'Dental Surgery', Icon: ToothIcon, desc: 'Oral & restorative care' },
+  { name: 'Dermatology', Icon: DropletIcon, desc: 'Skin & allergic care' },
+  { name: 'Orthopedics', Icon: BoneIcon, desc: 'Joint & sports therapy' }
+];
 
 export default function HomePage() {
   const doctors = getAllDoctors();
@@ -65,24 +86,30 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Quick Emergency Banner Bar */}
+          {/* Quick Emergency Banner Bar with SVG Icons */}
           <div className="mt-10 pt-6 border-t border-teal-800/60 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-300">
             <div className="flex items-center gap-3">
-              <span className="text-2xl">🚑</span>
+              <div className="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center flex-shrink-0">
+                <AmbulanceIcon className="w-5 h-5 text-teal-300" />
+              </div>
               <div>
                 <strong className="text-white block font-semibold">24/7 Red Cross Ambulance:</strong>
-                <a href="tel:907" className="text-teal-400 hover:underline font-mono">Dial 907 (Citywide)</a>
+                <a href="tel:907" className="text-teal-400 hover:underline font-mono font-bold">Dial 907 (Citywide)</a>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-2xl">📍</span>
+              <div className="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center flex-shrink-0">
+                <MapPinIcon className="w-5 h-5 text-teal-300" />
+              </div>
               <div>
                 <strong className="text-white block font-semibold">Flagship Branch:</strong>
                 <span>Cameroon St, Next to Bole Medhanealem</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-2xl">⚡</span>
+              <div className="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center flex-shrink-0">
+                <LightningIcon className="w-5 h-5 text-teal-300" />
+              </div>
               <div>
                 <strong className="text-white block font-semibold">Live Triage Queue:</strong>
                 <span>Zero waiting room guesswork</span>
@@ -106,33 +133,32 @@ export default function HomePage() {
           </div>
           <Link
             href="/doctors"
-            className="text-xs font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1"
+            className="text-xs font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1.5"
           >
-            Browse all departments &rarr;
+            <span>Browse all departments</span>
+            <ArrowRightIcon className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {[
-            { name: 'Cardiology', icon: '❤️', desc: 'Heart & hypertension' },
-            { name: 'Pediatrics', icon: '🧸', desc: 'Child wellness & care' },
-            { name: 'General Medicine', icon: '🩺', desc: 'Primary & family care' },
-            { name: 'Dental Surgery', icon: '🦷', desc: 'Oral & restorative care' },
-            { name: 'Dermatology', icon: '🧴', desc: 'Skin & allergic care' },
-            { name: 'Orthopedics', icon: '🦴', desc: 'Joint & sports therapy' }
-          ].map((dept) => (
-            <Link
-              key={dept.name}
-              href={`/doctors?specialty=${encodeURIComponent(dept.name)}`}
-              className="p-5 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-teal-400 dark:hover:border-teal-600 transition-all text-center group flex flex-col items-center justify-center min-h-[120px] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
-            >
-              <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">{dept.icon}</span>
-              <h3 className="font-bold text-xs text-slate-800 dark:text-slate-200 group-hover:text-teal-600">
-                {dept.name}
-              </h3>
-              <p className="text-[10px] text-slate-400 mt-0.5">{dept.desc}</p>
-            </Link>
-          ))}
+          {CLINICAL_DEPARTMENTS.map((dept) => {
+            const Icon = dept.Icon;
+            return (
+              <Link
+                key={dept.name}
+                href={`/doctors?specialty=${encodeURIComponent(dept.name)}`}
+                className="p-5 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-teal-400 dark:hover:border-teal-600 shadow-sm hover:shadow-md transition-all text-center group flex flex-col items-center justify-center min-h-[130px] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                  <Icon className="w-6 h-6 transition-transform group-hover:scale-110" />
+                </div>
+                <h3 className="font-bold text-xs text-slate-900 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400">
+                  {dept.name}
+                </h3>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{dept.desc}</p>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

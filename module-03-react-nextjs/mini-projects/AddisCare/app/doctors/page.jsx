@@ -1,6 +1,7 @@
 import { getAllDoctors } from '@/data/clinicStore';
 import DoctorCard from '@/components/DoctorCard';
 import SpecialtyBar from '@/components/SpecialtyBar';
+import { StethoscopeIcon } from '@/components/Icons';
 
 export const metadata = {
   title: 'Specialist Doctors & Medical Consultants | AddisCare',
@@ -46,7 +47,7 @@ export default async function DoctorsPage({ searchParams }) {
       {/* Doctors Grid / Empty State */}
       {filteredDoctors.length === 0 ? (
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-sm max-w-lg mx-auto">
-          <span className="text-4xl block mb-3">🩺</span>
+          <StethoscopeIcon className="w-12 h-12 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
           <h3 className="text-lg font-bold text-slate-800 dark:text-white">
             No doctors found matching criteria
           </h3>
