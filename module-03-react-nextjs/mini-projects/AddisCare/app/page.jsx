@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllDoctors, SPECIALTIES } from '@/data/clinicStore';
 import DoctorCard from '@/components/DoctorCard';
 import { etb } from '@/lib/format';
@@ -21,6 +22,18 @@ export default function HomePage() {
           
           {/* Subtle Ambient Graphic Glow */}
           <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl pointer-events-none"></div>
+
+          {/* Hero Decorative Watermark Emblem */}
+          <div className="absolute -right-6 -bottom-6 w-72 h-72 opacity-20 pointer-events-none hidden lg:block">
+            <Image
+              src="/logo.png"
+              alt=""
+              width={288}
+              height={288}
+              className="w-full h-full object-contain filter drop-shadow-2xl"
+              aria-hidden="true"
+            />
+          </div>
 
           <div className="max-w-3xl space-y-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-400/30 text-teal-300 text-xs font-bold uppercase tracking-wider">

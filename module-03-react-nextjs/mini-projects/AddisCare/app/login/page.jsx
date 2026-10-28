@@ -2,6 +2,7 @@
 
 import { useActionState, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import { login } from '@/actions/authActions';
 
 export default function LoginPage() {
@@ -24,8 +25,15 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans transition-colors">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="w-12 h-12 rounded-2xl bg-teal-600 text-white text-2xl font-bold flex items-center justify-center mx-auto shadow-md shadow-teal-500/20 mb-3">
-          🩺
+        <div className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+          <Image
+            src="/logo.png"
+            alt="AddisCare Emblem"
+            width={64}
+            height={64}
+            className="w-full h-full object-contain drop-shadow-md"
+            priority
+          />
         </div>
         <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
           Sign In to AddisCare

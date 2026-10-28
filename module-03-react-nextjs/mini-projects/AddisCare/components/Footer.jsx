@@ -8,18 +8,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 
           {/* Clinic Branding */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 p-0.5">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="relative w-12 h-12 flex-shrink-0">
                 <Image
                   src="/logo.png"
                   alt="AddisCare Emblem"
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-cover rounded-md"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-lg font-bold text-white tracking-tight">AddisCare</span>
+              <div>
+                <span className="text-xl font-extrabold text-white tracking-tight block">AddisCare</span>
+                <span className="text-[10px] uppercase font-bold tracking-wider text-teal-400 block">Clinic Diary · Addis Ababa</span>
+              </div>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">
               Empowering urban healthcare in Addis Ababa with seamless digital doctor appointments, verified triage queues, and secure patient medical records.

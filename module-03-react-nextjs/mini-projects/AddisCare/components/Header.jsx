@@ -9,28 +9,28 @@ export default async function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-teal-100 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
 
           {/* Logo & Brand Identity */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-1 group"
+            className="flex items-center gap-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-xl p-1.5 group"
           >
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-teal-50 dark:bg-slate-800 border border-teal-200/60 dark:border-teal-900/40 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
               <Image
                 src="/logo.png"
-                alt="AddisCare Clinic Diary Official Emblem"
-                width={40}
-                height={40}
-                className="w-full h-full object-cover"
+                alt="AddisCare Emblem"
+                width={56}
+                height={56}
+                className="w-full h-full object-contain drop-shadow-sm"
                 priority
               />
             </div>
             <div>
-              <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-1 leading-none">
                 Addis<span className="text-teal-600">Care</span>
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-wider text-teal-700 dark:text-teal-400 block -mt-1">
+              <span className="text-[11px] uppercase font-bold tracking-wider text-teal-700 dark:text-teal-400 block mt-1">
                 Clinic Diary · Addis Ababa
               </span>
             </div>
