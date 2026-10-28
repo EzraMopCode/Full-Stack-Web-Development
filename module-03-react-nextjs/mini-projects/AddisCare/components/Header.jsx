@@ -31,7 +31,7 @@ export default async function Header() {
                 Addis<span className="text-teal-600">Care</span>
               </span>
               <span className="text-[11px] uppercase font-bold tracking-wider text-teal-700 dark:text-teal-400 block mt-1">
-                Clinic Diary · Addis Ababa
+                Clinic Diary
               </span>
             </div>
           </Link>

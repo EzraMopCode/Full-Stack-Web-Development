@@ -25,7 +25,7 @@ export default function Footer() {
                   AddisCare
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-teal-700 dark:text-teal-400 block">
-                  Clinic Diary · Addis Ababa
+                  Clinic Diary
                 </span>
               </div>
             </div>
