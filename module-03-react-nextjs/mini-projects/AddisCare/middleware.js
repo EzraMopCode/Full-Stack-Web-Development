@@ -34,10 +34,9 @@ export function middleware(request) {
     }
 
     if (session.role !== 'doctor' && session.role !== 'staff') {
-      return new NextResponse(
-        JSON.stringify({ error: 'Forbidden', message: 'Clinic Portal access requires an authorized medical license or nurse role.' }),
-        { status: 403, headers: { 'Content-Type': 'application/json' } }
-      );
+      const deniedUrl = new URL('/access-denied', request.url);
+      deniedUrl.searchParams.set('from', pathname);
+      return NextResponse.redirect(deniedUrl);
     }
   }
 

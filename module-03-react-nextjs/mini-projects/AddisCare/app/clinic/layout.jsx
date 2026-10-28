@@ -12,7 +12,7 @@ export default async function ClinicStaffLayout({ children }) {
 
   // Refusal line: Enforces clinical staff role (doctor / staff)
   if (session.role !== 'doctor' && session.role !== 'staff') {
-    redirect('/portal/appointments');
+    redirect('/access-denied?from=/clinic/queue');
   }
 
   return (
