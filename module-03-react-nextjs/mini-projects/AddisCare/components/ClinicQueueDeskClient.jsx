@@ -112,7 +112,7 @@ export default function ClinicQueueDeskClient({ initialAppointments }) {
                       onClick={() => handleAdvance(apt.id, apt.triageStage)}
                       className="min-h-[44px] px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm transition-colors disabled:opacity-50 cursor-pointer flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
                     >
-                      {isProcessing ? 'Updating...' : 'Advance Triage Stage &rarr;'}
+                      {isProcessing ? 'Updating...' : 'Advance Triage Stage →'}
                     </button>
                     <Link
                       href={`/portal/appointments/${apt.id}/live`}
