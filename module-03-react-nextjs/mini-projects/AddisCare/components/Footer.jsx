@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -8,8 +9,16 @@ export default function Footer() {
 
           {/* Clinic Branding */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🩺</span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 p-0.5">
+                <Image
+                  src="/logo.png"
+                  alt="AddisCare Emblem"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover rounded-md"
+                />
+              </div>
               <span className="text-lg font-bold text-white tracking-tight">AddisCare</span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">

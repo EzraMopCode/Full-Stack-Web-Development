@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getSession } from '@/lib/session';
 import { logout } from '@/actions/authActions';
 
@@ -13,10 +14,17 @@ export default async function Header() {
           {/* Logo & Brand Identity */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-1"
+            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-1 group"
           >
-            <div className="w-9 h-9 rounded-xl bg-teal-600 flex items-center justify-center text-white text-lg font-bold shadow-sm shadow-teal-500/20">
-              🩺
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-teal-50 dark:bg-slate-800 border border-teal-200/60 dark:border-teal-900/40 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Image
+                src="/logo.png"
+                alt="AddisCare Clinic Diary Official Emblem"
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
             <div>
               <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
