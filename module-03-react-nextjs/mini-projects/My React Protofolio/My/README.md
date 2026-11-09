@@ -1,35 +1,36 @@
-# Hi there, I'm Ezra! 👋
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to the source code for my personal developer portfolio. I built this space to showcase my work, track my coding journey, and connect with other developers and tech teams.
+## Getting Started
 
-## 🚀 About The Project
+First, run the development server:
 
-I wanted a portfolio that felt native to how I work every day, so I designed this with a sleek, dark-mode IDE aesthetic. It features glowing hover effects, a responsive grid layout, and seamless navigation.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Under the hood, it's built with:
-* **React & Vite** for a lightning-fast development experience and rendering.
-* **Tailwind CSS** for all the custom styling, grid layouts, and glassmorphism effects.
-* **Font Awesome** for clean, scalable vector icons.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 👨‍💻 A Bit About Me
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-I am a Computer Science undergraduate at St. Mary's University in Addis Ababa, and I'm also completing a full-stack software development program at IBT College.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-While my portfolio heavily features my frontend capabilities (React, Next.js, Zustand), my current passion and focus is expanding into **C# and .NET backend architecture**. My goal is to build robust, full-stack enterprise applications.
+## Learn More
 
-## 🛠️ Featured Projects Inside
-If you browse the site (or the source code), you'll see a few of the things I'm most proud of:
-* **Addis Eats:** A food delivery frontend using Next.js and Zustand.
-* **Campus Space Booker:** A facility booking interface with complex UI state management.
-* **Clinical Diary:** A responsive health tracking and logging dashboard.
+To learn more about Next.js, take a look at the following resources:
 
-## 💻 How to Run This Locally
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-If you want to clone this repo and run it on your own machine, it's super simple!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/EzraMopCode/your-repo-name.git](https://github.com/EzraMopCode/your-repo-name.git)
+## Deploy on Vercel
 
-## Let's Connect!
-I am actively looking for internship opportunities where I can apply my React skills and grow my .NET backend experience
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
